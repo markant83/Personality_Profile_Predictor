@@ -7,7 +7,7 @@ import streamlit as st
 # -------------------------------
 #"""Lädt das serialisierte Modell und stellt ein Web-Interface für Einzelvorhersagen bereit."""
 model = joblib.load('best_personality_model.joblib')
-st.latex("E = mc^2")
+st.latex("E = mc^3")
 st.divider()
 st.title('Personality Profile Predictor') 
 
