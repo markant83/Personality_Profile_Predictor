@@ -6,4 +6,5 @@ mlruns/
 !ML_101_app.py
 codebook.txt
 *.png
-data/*.csv
+data/
+*.csv
