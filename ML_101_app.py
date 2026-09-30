@@ -7,9 +7,9 @@ import streamlit as st
 # -------------------------------
 #"""Lädt das serialisierte Modell und stellt ein Web-Interface für Einzelvorhersagen bereit."""
 model = joblib.load('best_personality_model.joblib')
-st.latex("E = mc^3")
-st.divider()
+
 st.title('Personality Profile Predictor') 
+st.divider()
 
 col1, col2 = st.columns(2)
 with col1:
@@ -62,6 +62,8 @@ num_cols = model.named_steps['preprocessor'].transformers_[0][2]
 for col, text in QUESTIONS_ORDER.items():
     if col in num_cols:
         input_dict[col] = st.slider(f'{col}: {text}', 1, 5, 3)
+
+st.divider()
 
 explanations = {
     "Resilient": "Emotional stabil, anpassungsfähig und stressresistent.",
