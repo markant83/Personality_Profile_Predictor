@@ -67,9 +67,10 @@ explanations = {
 
 if st.button('Predict Profile'):
     pred = model.predict(pd.DataFrame([input_dict]))[0]
-    st.success(
-        f"Vorhergesagtes Persönlichkeitsprofil: **{pred}**",
-        help=explanations.get(str(pred), "Keine Beschreibung verfügbar."),
-    )
+    st.success(f"Vorhergesagtes Persönlichkeitsprofil: **{pred}**")
+    
+    # Erklärung direkt darunter anzeigen:
+    beschreibung = explanations.get(str(pred), "Keine Beschreibung verfügbar.")
+    st.info(f"ℹ️ **Bedeutung:** {beschreibung}")
 
   
