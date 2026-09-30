@@ -13,7 +13,7 @@ st.title('Personality Profile Predictor')
 
 col1, col2 = st.columns(2)
 with col1:
-  age = st.slider('Age', 10, 100, 25)
+  age = st.slider('Age', 10, 100, 45)
   gender = st.selectbox('Gender', ['Male', 'Female', 'Other'])
 with col2:
   hand = st.selectbox('Hand', ['Right', 'Left', 'Both'])
