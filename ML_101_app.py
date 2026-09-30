@@ -72,7 +72,7 @@ explanations = {
 # Ausgabe mit Hover-Popup:
 st.success(
     f"Vorhergesagtes Profil: **{pred}**",
-    help=explanations.get(pred, "Keine Beschreibung verfügbar."),
+    help=explanations.get(str(pred), "Keine Beschreibung verfügbar."),
 )
 
   
