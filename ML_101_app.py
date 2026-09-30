@@ -51,6 +51,7 @@ QUESTIONS_ORDER = {
 }
 
 st.subheader('Likert-Skalen (1-5)')
+st.text("1=Disagree, 2=Slightly Disagree, 3=Neutral, 4=Slightly Agree, 5=Agree")
 num_cols = model.named_steps['preprocessor'].transformers_[0][2]
 
 for col, text in QUESTIONS_ORDER.items():
