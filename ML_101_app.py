@@ -46,14 +46,14 @@ QUESTIONS_ORDER = {
     'E7': 'I talk to a lot of different people at parties. (Auf Feiern spreche ich mit vielen verschiedenen Leuten.)',
     'E9': "I don't mind being the center of attention. (Es stört mich nicht, im Mittelpunkt der Aufmerksamkeit zu stehen.)",
     'E10': 'I am quiet around strangers. (In der Nähe von Fremden bin ich eher ruhig.)',
-    'C4': 'C4: I make a mess of things. (Ich bringe Dinge oft durcheinander.)',
+    'C4': 'I make a mess of things. (Ich bringe Dinge oft durcheinander.)',
     'A4': "I sympathize with others' feelings. (Ich habe Mitgefühl für die Gefühle anderer.)",
 }
 
 st.subheader('Likert-Skalen (1-5)')
 st.markdown(
     '<p style="font-style: italic; margin-top: -15px; margin-bottom: 25px; color: #888;">'
-    "1 = Disagree, 2 = Slightly Disagree, 3 = Neutral, 4 = Slightly Agree, 5 = Agree"
+    "1 = Disagree  2 = Slightly Disagree  3 = Neutral  4 = Slightly Agree  5 = Agree"
     "</p>",
     unsafe_allow_html=True,
 )
