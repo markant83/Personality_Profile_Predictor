@@ -16,6 +16,7 @@ with col1:
   gender = st.selectbox('Gender', ['Male', 'Female', 'Other'])
   age = st.slider('Age', 10, 100, 45)
 with col2:
+  
   hand = st.selectbox('Hand', ['Right', 'Left', 'Both'])
 
 input_dict = {'age': age, 'gender': gender, 'hand': hand}
