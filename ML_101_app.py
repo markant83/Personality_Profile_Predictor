@@ -60,8 +60,8 @@ for col, text in QUESTIONS_ORDER.items():
 
 explanations = {
     "Resilient": "Emotional stabil, anpassungsfähig und stressresistent.",
-    "Undercontrolled": "Eher impulsiv, spontan und geringe Selbstkontrolle.",
-    "Overcontrolled": "Sehr gewissenhaft, gehemmt und sicherheitsorientiert.",
+    "Undercontroller": "Eher impulsiv, spontan und geringe Selbstkontrolle.",
+    "Overcontroller": "Sehr gewissenhaft, gehemmt und sicherheitsorientiert.",
     "Moderate": "Ausgeglichenes Durchschnittsprofil ohne extreme Ausschläge.",
 }
 
