@@ -51,7 +51,7 @@ QUESTIONS_ORDER = {
 }
 
 st.subheader('Likert-Skalen (1-5)')
-st.text("1=Disagree, 2=Slightly Disagree, 3=Neutral, 4=Slightly Agree, 5=Agree")
+st.text("1 = Disagree, 2 = Slightly Disagree, 3 = Neutral, 4 = Slightly Agree, 5 = Agree")
 num_cols = model.named_steps['preprocessor'].transformers_[0][2]
 
 for col, text in QUESTIONS_ORDER.items():
@@ -62,6 +62,17 @@ if st.button('Predict Profile'):
   pred = model.predict(pd.DataFrame([input_dict]))[0]
   st.success(f'Vorhergesagtes Persönlichkeitsprofil: **{pred}**')
 
+explanations = {
+    "Resilient": "Emotional stabil, anpassungsfähig und stressresistent.",
+    "Undercontrolled": "Eher impulsiv, spontan und geringe Selbstkontrolle.",
+    "Overcontrolled": "Sehr gewissenhaft, gehemmt und sicherheitsorientiert.",
+    "Moderate": "Ausgeglichenes Durchschnittsprofil ohne extreme Ausschläge.",
+}
 
+# Ausgabe mit Hover-Popup:
+st.success(
+    f"Vorhergesagtes Profil: **{prediction}**",
+    help=explanations.get(prediction, "Keine Beschreibung verfügbar."),
+)
 
   
