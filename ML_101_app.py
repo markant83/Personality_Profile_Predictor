@@ -160,7 +160,7 @@ st.divider()
 # Inferenz & Ausgabe
 # -------------------------------
 # Button mit kleinerem deutschen Text
-button_clicked = st.button("Predict Profile (Profil berechnen)", type="primary")
+button_clicked = st.button("Predict Profile (Profil berechnen)")
 
 if button_clicked:
     pred = str(model.predict(pd.DataFrame([input_dict]))[0])
@@ -168,26 +168,27 @@ if button_clicked:
         pred, ("No description available.", "Keine Beschreibung verfügbar.")
     )
 
-    # 1. Nur das Ergebnis – groß, klar und zentriert
+    # 1. Ergebnis-Box: Grüner Rand, weiße fette Schrift
     st.markdown(
         f"""
-        <div style="background-color: rgba(46, 125, 50, 0.12); border-left: 5px solid #2e7d32; 
-                    padding: 16px 20px; border-radius: 6px; margin-bottom: 12px;
-                    font-size: 1.6rem; font-weight: 700; color: #1b5e20;">
+        <div style="background-color: rgba(46, 125, 50, 0.25); border-left: 5px solid #4caf50; 
+                    padding: 14px 18px; border-radius: 6px; margin-bottom: 12px;
+                    font-size: 1.5rem; font-weight: 700; color: #ffffff;">
             {pred}
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # 2. Erklärungsfeld mit Standard-Info-Symbol (ℹ️) und dezentem, kleinerem Deutsch
+    # 2. Erklärungs-Box: Blauer Rand, weiße Schrift, Deutsch leicht kleiner & hellgrau
     st.markdown(
         f"""
-        <div style="background-color: rgba(33, 150, 243, 0.08); border-left: 5px solid #1976d2; 
-                    padding: 12px 16px; border-radius: 6px; font-size: 0.95rem; line-height: 1.5; color: #222;">
-            ℹ️ {en_desc} <span style="font-size: 0.82em; color: #777;">({de_desc})</span>
+        <div style="background-color: rgba(33, 150, 243, 0.20); border-left: 5px solid #2196f3; 
+                    padding: 12px 16px; border-radius: 6px; font-size: 0.95rem; line-height: 1.5; color: #ffffff;">
+            ℹ️ {en_desc} <span style="font-size: 0.85em; color: #d0d0d0;">({de_desc})</span>
         </div>
         """,
         unsafe_allow_html=True,
     )
-  
+
+    
