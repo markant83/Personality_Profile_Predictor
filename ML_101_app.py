@@ -176,29 +176,32 @@ if button_clicked:
         pred, ("No description available.", "Keine Beschreibung verfügbar.")
     )
 
-    # Geteilte Box im Flex-Layout (gleiche Höhe, einheitliches Grün)
     st.markdown(
         f"""
         <div style="display: flex; align-items: stretch; background-color: rgba(46, 125, 50, 0.25); 
                     border: 1px solid rgba(76, 175, 80, 0.5); border-left: 5px solid #4caf50; 
                     border-radius: 8px; margin-top: 15px; overflow: hidden;">
-            <!-- Linke Spalte: Ergebnis -->
-            <div style="flex: 0 0 35%; display: flex; align-items: center; justify-content: center; 
-                        padding: 16px 20px; font-size: 1.45rem; font-weight: 700; color: #ffffff; text-align: center;">
+            <!-- Linke Spalte: Profilname -->
+            <div style="flex: 0 0 30%; display: flex; align-items: center; justify-content: center; 
+                        padding: 16px 20px; font-size: 1.5rem; font-weight: 700; color: #ffffff; text-align: center;">
                 {pred}
             </div>
-            <!-- Schwarzer Trennbalken -->
+            <!-- Trennbalken -->
             <div style="width: 2px; background-color: #111111; opacity: 0.8;"></div>
-            <!-- Rechte Spalte: Erklärung -->
-            <div style="flex: 1; display: flex; align-items: center; padding: 14px 20px; 
-                        font-size: 0.95rem; line-height: 1.5; color: #ffffff;">
-                <div>
-                    {en_desc} <span style="font-size: 0.85em; color: #d0d0d0;">({de_desc})</span>
+            <!-- Rechte Spalte: Erklärung untereinander -->
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; 
+                        padding: 14px 22px; gap: 4px;">
+                <div style="font-size: 1rem; color: #ffffff; line-height: 1.4;">
+                    {en_desc}
+                </div>
+                <div style="font-size: 0.85rem; color: #cfcfcf; line-height: 1.4;">
+                    ({de_desc})
                 </div>
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
+
 
     
