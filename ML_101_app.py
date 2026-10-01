@@ -13,35 +13,50 @@ st.set_page_config(
 
 model = joblib.load("best_personality_model.joblib")
 
-# Globale CSS-Stile: Dropdowns & Button zweisprachig stylen
+# -------------------------------
+# Globale CSS-Stile
+# -------------------------------
 st.markdown(
     """
     <style>
-    /* 1. Oberen Leerraum reduzieren */
+    /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
         padding-top: 1.5rem !important;
         padding-bottom: 2rem !important;
-        max-width: 920px !important; /* Optimale Breite für einzeilige Skalen */
+        max-width: 920px !important;
     }
 
-    /* 2. Plastischer 3D-Button (etwas größer & dezent grau) */
+    /* 2. Plastischer 3D-Button (Höhe exakt an Ergebnisbox angepasst) */
     div.stButton > button {
         background: linear-gradient(180deg, #3a3f47 0%, #2b2f36 100%) !important;
         color: #ffffff !important;
         border: 1px solid #1f2227 !important;
         border-bottom: 5px solid #16181b !important;
         border-radius: 8px !important;
-        padding: 14px 16px !important;
-        font-size: 1.15rem !important;
+        height: 85px !important;
+        min-height: 85px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 1.05rem !important;
         font-weight: 600 !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-        white-space: pre-line !important; /* Ermöglicht saubere Zeilenumbrüche */
-        line-height: 1.3 !important;
+        line-height: 1.25 !important;
+        white-space: pre-line !important;
+        transition: all 0.1s ease-in-out !important;
+    }
+    div.stButton > button p {
+        margin: 0 !important;
     }
     div.stButton > button p:last-child {
-        font-size: 0.85em !important;
+        font-size: 0.82em !important;
         color: #b0b0b0 !important;
         font-weight: normal !important;
+    }
+    div.stButton > button:hover {
+        background: linear-gradient(180deg, #444a54 0%, #323740 100%) !important;
+        border-color: #2b2f36 !important;
     }
     div.stButton > button:active {
         border-bottom-width: 1px !important;
@@ -49,7 +64,7 @@ st.markdown(
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* 3. Dropdown-Schriftgröße vergrößern */
+    /* 3. Dropdown-Schriftgröße */
     div[data-baseweb="select"] {
         font-size: 1.1rem !important;
     }
@@ -63,8 +78,8 @@ st.markdown(
 # -------------------------------
 def bilingual_label(en: str, de: str):
     st.markdown(
-        f'<span style="font-weight: 600; font-size: 1rem;">{en}</span> '
-        f'<span style="font-size: 0.82rem; color: #888; margin-left: 6px;">({de})</span>',
+        f'<span style="font-weight: 600; font-size: 1.35rem;">{en}</span> '
+        f'<span style="font-size: 1.05rem; color: #a0a0a0; margin-left: 8px;">({de})</span>',
         unsafe_allow_html=True,
     )
 
@@ -135,6 +150,7 @@ with col1:
         label_visibility="collapsed",
     )
 
+    st.write("")
     bilingual_label("Age", "Alter")
     age = st.slider("Age", 10, 100, 45, label_visibility="collapsed")
 
@@ -149,14 +165,15 @@ with col2:
 
 input_dict = {"age": age, "gender": gender, "hand": hand}
 
+st.write("")
 bilingual_label("Likert Scales (1–5)", "Likert-Skalen 1–5")
 st.markdown(
-    '<p style="font-style: italic; margin-top: -5px; margin-bottom: 20px; color: #888; font-size: 0.88rem;">'
-    "1 = Disagree <span style='font-size: 0.85em;'>(Trifft nicht zu)</span> &nbsp;|&nbsp; "
-    "2 = Slightly Disagree <span style='font-size: 0.85em;'>(Trifft eher nicht zu)</span> &nbsp;|&nbsp; "
-    "3 = Neutral <span style='font-size: 0.85em;'>(Neutral)</span> &nbsp;|&nbsp; "
-    "4 = Slightly Agree <span style='font-size: 0.85em;'>(Trifft eher zu)</span> &nbsp;|&nbsp; "
-    "5 = Agree <span style='font-size: 0.85em;'>(Trifft voll zu)</span>"
+    '<p style="font-style: italic; margin-top: 2px; margin-bottom: 25px; color: #999; font-size: 1rem; white-space: nowrap;">'
+    "1 = Disagree <span style='font-size: 0.88em; color: #888;'>(Trifft nicht zu)</span> &nbsp;|&nbsp; "
+    "2 = Slightly Disagree <span style='font-size: 0.88em; color: #888;'>(Trifft eher nicht zu)</span> &nbsp;|&nbsp; "
+    "3 = Neutral <span style='font-size: 0.88em; color: #888;'>(Neutral)</span> &nbsp;|&nbsp; "
+    "4 = Slightly Agree <span style='font-size: 0.88em; color: #888;'>(Trifft eher zu)</span> &nbsp;|&nbsp; "
+    "5 = Agree <span style='font-size: 0.88em; color: #888;'>(Trifft voll zu)</span>"
     "</p>",
     unsafe_allow_html=True,
 )
@@ -166,9 +183,9 @@ num_cols = model.named_steps["preprocessor"].transformers_[0][2]
 for col, (en_text, de_text) in QUESTIONS.items():
     if col in num_cols:
         st.markdown(
-            f'<div style="margin-top: 12px; margin-bottom: -10px;">'
+            f'<div style="margin-top: 14px; margin-bottom: -6px; font-size: 1.35rem;">'
             f"<strong>{col}:</strong> {en_text} "
-            f'<span style="font-size: 0.82em; color: #888;">({de_text})</span>'
+            f'<span style="font-size: 0.85em; color: #a0a0a0;">({de_text})</span>'
             f"</div>",
             unsafe_allow_html=True,
         )
@@ -177,12 +194,11 @@ for col, (en_text, de_text) in QUESTIONS.items():
 st.divider()
 
 # -------------------------------
-# Inferenz & 2-Spalten-Layout (Button links, Ergebnis rechts)
+# Inferenz & 2-Spalten-Layout (1 : 3)
 # -------------------------------
-col_btn, col_res = st.columns([1, 2], gap="medium")
+col_btn, col_res = st.columns([1, 3], gap="medium")
 
 with col_btn:
-    # Breiter, wuchtiger 3D-Button (zweizeilig: Englisch über Deutsch)
     button_clicked = st.button(
         "Predict Profile\n\n(Profil berechnen)", 
         use_container_width=True
@@ -199,21 +215,21 @@ with col_res:
             f"""
             <div style="display: flex; align-items: stretch; background-color: rgba(46, 125, 50, 0.25); 
                         border: 1px solid rgba(76, 175, 80, 0.5); border-left: 6px solid #4caf50; 
-                        border-radius: 8px; overflow: hidden; min-height: 85px;">
+                        border-radius: 8px; overflow: hidden; height: 85px;">
                 <!-- Linker Teil: Profilname -->
-                <div style="flex: 0 0 35%; display: flex; align-items: center; justify-content: center; 
-                            padding: 12px 14px; font-size: 1.45rem; font-weight: 700; color: #ffffff; text-align: center;">
+                <div style="flex: 0 0 28%; display: flex; align-items: center; justify-content: center; 
+                            padding: 10px 14px; font-size: 1.45rem; font-weight: 700; color: #ffffff; text-align: center;">
                     {pred}
                 </div>
                 <!-- Trenner -->
                 <div style="width: 2px; background-color: #111111; opacity: 0.8;"></div>
-                <!-- Rechter Teil: Erklärung untereinander -->
+                <!-- Rechter Teil: Je eine Zeile Englisch & Deutsch -->
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; 
-                            padding: 12px 16px; gap: 4px;">
-                    <div style="font-size: 1.05rem; color: #ffffff; line-height: 1.35;">
+                            padding: 10px 18px; gap: 3px; overflow: hidden;">
+                    <div style="font-size: 1.05rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         {en_desc}
                     </div>
-                    <div style="font-size: 0.9rem; color: #cfcfcf; line-height: 1.35;">
+                    <div style="font-size: 0.88rem; color: #cfcfcf; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         ({de_desc})
                     </div>
                 </div>
@@ -221,4 +237,5 @@ with col_res:
             """,
             unsafe_allow_html=True,
         )
+        
 
