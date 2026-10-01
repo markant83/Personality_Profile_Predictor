@@ -108,7 +108,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.markdown(
-    '<span style="font-size: 0.6em; color: #888; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h2>',
+    '<span style="font-size: 1.6em; color: #888; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h2>',
     unsafe_allow_html=True,
 )
 st.divider()
