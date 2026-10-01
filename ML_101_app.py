@@ -168,22 +168,26 @@ if button_clicked:
         pred, ("No description available.", "Keine Beschreibung verfügbar.")
     )
 
-    # Ergebnis-Box: Nur der Profilname ohne Klammern
+    # 1. Nur das Ergebnis – groß, klar und zentriert
     st.markdown(
         f"""
-        <div style="background-color: rgba(46, 125, 50, 0.12); border-left: 5px solid #2e7d32; padding: 14px; border-radius: 4px; margin-bottom: 12px;">
-            <div style="font-size: 0.85rem; color: #555; margin-bottom: 2px;">
-                <strong>Predicted Personality Profile</strong> <span style="font-size: 0.82em; color: #888;">(Vorhergesagtes Persönlichkeitsprofil)</span>
-            </div>
-            <div style="font-size: 1.45rem; font-weight: bold; color: #1b5e20;">
-                {pred}
-            </div>
+        <div style="background-color: rgba(46, 125, 50, 0.12); border-left: 5px solid #2e7d32; 
+                    padding: 16px 20px; border-radius: 6px; margin-bottom: 12px;
+                    font-size: 1.6rem; font-weight: 700; color: #1b5e20;">
+            {pred}
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # Info-Feld: Ohne Überschrift, direkt Erklärung mit dezentem Deutsch
-    st.info(f"{en_desc} :gray[({de_desc})]")
-
+    # 2. Erklärungsfeld mit Standard-Info-Symbol (ℹ️) und dezentem, kleinerem Deutsch
+    st.markdown(
+        f"""
+        <div style="background-color: rgba(33, 150, 243, 0.08); border-left: 5px solid #1976d2; 
+                    padding: 12px 16px; border-radius: 6px; font-size: 0.95rem; line-height: 1.5; color: #222;">
+            ℹ️ {en_desc} <span style="font-size: 0.82em; color: #777;">({de_desc})</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
   
