@@ -18,9 +18,10 @@ Eine interaktive Machine-Learning-Webanwendung auf Basis von **Streamlit** und *
   * Kategoriale Merkmale: Modus-Imputation (`most_frequent`) + One-Hot-Encoding (`OneHotEncoder`).
 * **Modellvergleich & Tuning:**
   * Vergleich via 5-Fold Cross-Validation: Logistic Regression, Random Forest und HistGradientBoosting.
-  * Sieger-Modell: **HistGradientBoostingClassifier** (~86 % Test-Genauigkeit).
-  * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`).
-
+  * Sieger-Modell: **HistGradientBoostingClassifier**.
+  * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`) optimiert auf **F1-Macro-Score** (ungewichtetes Mittel über alle 5 Persönlichkeitsklassen):
+    * **Bester F1-Macro CV-Score:** `~0.7944`
+    * **Test-Set Accuracy (Gesamttrefferquote):** `~86.1 %`
 ---
 
 ### 2. Die Anwendung & der Persönlichkeitstest
