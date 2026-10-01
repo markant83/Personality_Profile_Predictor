@@ -105,13 +105,10 @@ PROFILES = {
 # -------------------------------
 st.markdown(
     '<h2>🧠 Personality Profile Predictor '
-    '<span style="font-size: 0.6em; color: #888; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h2>',
     unsafe_allow_html=True,
 )
 st.markdown(
-    '<p style="color: #666; font-size: 0.9em; margin-top: -10px;">'
-    'Big Five / IPIP Psychometric Personality Classification '
-    '<span style="color: #888;">(Psychometrische Persönlichkeitsklassifikation)</span></p>',
+    '<span style="font-size: 0.6em; color: #888; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h2>',
     unsafe_allow_html=True,
 )
 st.divider()
