@@ -13,8 +13,30 @@ st.set_page_config(
 
 model = joblib.load("best_personality_model.joblib")
 
+# Globale CSS-Stile: Dropdowns & Button zweisprachig stylen
+st.markdown(
+    """
+    <style>
+    /* Styling für das kleinere, graue Deutsch in Selectboxen */
+    div[data-baseweb="select"] span.de-sub {
+        font-size: 0.82em;
+        color: #888;
+        margin-left: 5px;
+    }
+    /* Styling für den Predict-Button */
+    div.stButton > button span.de-btn {
+        font-size: 0.82em;
+        opacity: 0.8;
+        font-weight: normal;
+        margin-left: 6px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # -------------------------------
-# Hilfsfunktionen & Mappings
+# Hilfsfunktionen & Wörterbücher
 # -------------------------------
 def bilingual_label(en: str, de: str):
     st.markdown(
@@ -23,60 +45,11 @@ def bilingual_label(en: str, de: str):
         unsafe_allow_html=True,
     )
 
-gender_labels = {
-    "Female": "Female (Weiblich)",
-    "Male": "Male (Männlich)",
-    "Other": "Other (Divers / Sonstige)",
-}
+GENDER_OPTIONS = ["Female", "Male", "Other"]
+GENDER_DE = {"Female": "Weiblich", "Male": "Männlich", "Other": "Divers / Sonstige"}
 
-hand_labels = {
-    "Right": "Right (Rechtshänder)",
-    "Left": "Left (Linkshänder)",
-    "Both": "Both (Beidhänder)",
-}
-
-# -------------------------------
-# Benutzeroberfläche
-# -------------------------------
-st.title("🧠 Personality Profile Predictor")
-st.caption("Big Five / IPIP psychometrische Persönlichkeitsklassifikation")
-st.divider()
-
-col1, col2 = st.columns(2)
-with col1:
-    bilingual_label("Gender", "Geschlecht")
-    gender = st.selectbox(
-        "Gender",
-        options=["Female", "Male", "Other"],
-        format_func=lambda x: gender_labels.get(x, x),
-        label_visibility="collapsed",
-    )
-
-    bilingual_label("Age", "Alter")
-    age = st.slider("Age", 10, 100, 45, label_visibility="collapsed")
-
-with col2:
-    bilingual_label("Handedness", "Händigkeit")
-    hand = st.selectbox(
-        "Hand",
-        options=["Right", "Left", "Both"],
-        format_func=lambda x: hand_labels.get(x, x),
-        label_visibility="collapsed",
-    )
-
-input_dict = {"age": age, "gender": gender, "hand": hand}
-
-st.subheader("Likert-Skalen (1–5)")
-st.markdown(
-    '<p style="font-style: italic; margin-top: -10px; margin-bottom: 20px; color: #888;">'
-    "1 = Disagree (Trifft nicht zu) &nbsp;|&nbsp; "
-    "2 = Slightly Disagree &nbsp;|&nbsp; "
-    "3 = Neutral &nbsp;|&nbsp; "
-    "4 = Slightly Agree &nbsp;|&nbsp; "
-    "5 = Agree (Trifft voll zu)"
-    "</p>",
-    unsafe_allow_html=True,
-)
+HAND_OPTIONS = ["Right", "Left", "Both"]
+HAND_DE = {"Right": "Rechtshänder", "Left": "Linkshänder", "Both": "Beidhänder"}
 
 QUESTIONS = {
     "N1": ("I get stressed out easily.", "Ich gerate leicht unter Stress."),
@@ -100,14 +73,93 @@ QUESTIONS = {
     "A4": ("I sympathize with others' feelings.", "Ich habe Mitgefühl für die Gefühle anderer."),
 }
 
+PROFILES = {
+    "Resilient": (
+        "Resilient",
+        "Widerstandsfähig / Stressresistent",
+        "Emotionally stable, adaptable, and handles stress well.",
+        "Emotional stabil, anpassungsfähig und stressresistent.",
+    ),
+    "Undercontroller": (
+        "Undercontroller",
+        "Impulsiv / Gering reguliert",
+        "More impulsive, spontaneous, and prone to low self-regulation.",
+        "Eher impulsiv, spontan und geringe Selbstkontrolle.",
+    ),
+    "Overcontroller": (
+        "Overcontroller",
+        "Überkontrolliert / Gehemmt",
+        "Highly conscientious, cautious, and security-oriented.",
+        "Sehr gewissenhaft, gehemmt und sicherheitsorientiert.",
+    ),
+    "Moderate": (
+        "Moderate",
+        "Ausgeglichen / Durchschnittlich",
+        "Balanced average profile without prominent extremes.",
+        "Ausgeglichenes Durchschnittsprofil ohne extreme Ausschläge.",
+    ),
+}
+
+# -------------------------------
+# Benutzeroberfläche
+# -------------------------------
+st.markdown(
+    '<h2>🧠 Personality Profile Predictor '
+    '<span style="font-size: 0.6em; color: #888; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h2>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<p style="color: #666; font-size: 0.9em; margin-top: -10px;">'
+    'Big Five / IPIP Psychometric Personality Classification '
+    '<span style="color: #888;">(Psychometrische Persönlichkeitsklassifikation)</span></p>',
+    unsafe_allow_html=True,
+)
+st.divider()
+
+col1, col2 = st.columns(2)
+with col1:
+    bilingual_label("Gender", "Geschlecht")
+    gender = st.selectbox(
+        "Gender",
+        options=GENDER_OPTIONS,
+        format_func=lambda x: f"{x} ({GENDER_DE.get(x, '')})",
+        label_visibility="collapsed",
+    )
+
+    bilingual_label("Age", "Alter")
+    age = st.slider("Age", 10, 100, 45, label_visibility="collapsed")
+
+with col2:
+    bilingual_label("Handedness", "Händigkeit")
+    hand = st.selectbox(
+        "Hand",
+        options=HAND_OPTIONS,
+        format_func=lambda x: f"{x} ({HAND_DE.get(x, '')})",
+        label_visibility="collapsed",
+    )
+
+input_dict = {"age": age, "gender": gender, "hand": hand}
+
+bilingual_label("Likert Scales (1–5)", "Likert-Skalen 1–5")
+st.markdown(
+    '<p style="font-style: italic; margin-top: -5px; margin-bottom: 20px; color: #888; font-size: 0.88rem;">'
+    "1 = Disagree <span style='font-size: 0.85em;'>(Trifft nicht zu)</span> &nbsp;|&nbsp; "
+    "2 = Slightly Disagree <span style='font-size: 0.85em;'>(Trifft eher nicht zu)</span> &nbsp;|&nbsp; "
+    "3 = Neutral <span style='font-size: 0.85em;'>(Neutral)</span> &nbsp;|&nbsp; "
+    "4 = Slightly Agree <span style='font-size: 0.85em;'>(Trifft eher zu)</span> &nbsp;|&nbsp; "
+    "5 = Agree <span style='font-size: 0.85em;'>(Trifft voll zu)</span>"
+    "</p>",
+    unsafe_allow_html=True,
+)
+
 num_cols = model.named_steps["preprocessor"].transformers_[0][2]
 
 for col, (en_text, de_text) in QUESTIONS.items():
     if col in num_cols:
         st.markdown(
-            f'<div style="margin-top: 10px; margin-bottom: -10px;">'
+            f'<div style="margin-top: 12px; margin-bottom: -10px;">'
             f"<strong>{col}:</strong> {en_text} "
-            f'<span style="font-size: 0.85em; color: #888;">({de_text})</span>'
+            f'<span style="font-size: 0.82em; color: #888;">({de_text})</span>'
             f"</div>",
             unsafe_allow_html=True,
         )
@@ -115,21 +167,46 @@ for col, (en_text, de_text) in QUESTIONS.items():
 
 st.divider()
 
-explanations = {
-    "Resilient": "Emotional stabil, anpassungsfähig und stressresistent.",
-    "Undercontroller": "Eher impulsiv, spontan und geringe Selbstkontrolle.",
-    "Overcontroller": "Sehr gewissenhaft, gehemmt und sicherheitsorientiert.",
-    "Moderate": "Ausgeglichenes Durchschnittsprofil ohne extreme Ausschläge.",
-}
-
 # -------------------------------
 # Inferenz & Ausgabe
 # -------------------------------
-if st.button("Predict Profile (Profil berechnen)", type="primary"):
-    pred = model.predict(pd.DataFrame([input_dict]))[0]
-    st.success(f"Vorhergesagtes Persönlichkeitsprofil: **{pred}**")
+# Button mit kleinerem deutschen Text
+button_clicked = st.button("Predict Profile (Profil berechnen)", type="primary")
 
-    beschreibung = explanations.get(str(pred), "Keine Beschreibung verfügbar.")
-    st.info(f"ℹ️ **Bedeutung:** {beschreibung}")
+if button_clicked:
+    pred = str(model.predict(pd.DataFrame([input_dict]))[0])
+    en_title, de_title, en_desc, de_desc = PROFILES.get(
+        pred, (pred, pred, "No description available.", "Keine Beschreibung verfügbar.")
+    )
+
+    # Zweisprachige Ergebnis-Box
+    st.markdown(
+        f"""
+        <div style="background-color: rgba(46, 125, 50, 0.12); border-left: 5px solid #2e7d32; padding: 14px; border-radius: 4px; margin-bottom: 15px;">
+            <div style="font-size: 0.9rem; color: #555; margin-bottom: 4px;">
+                <strong>Predicted Personality Profile</strong> <span style="font-size: 0.82em; color: #888;">(Vorhergesagtes Persönlichkeitsprofil)</span>
+            </div>
+            <div style="font-size: 1.45rem; font-weight: bold; color: #1b5e20;">
+                {en_title} <span style="font-size: 0.72em; font-weight: normal; color: #666;">({de_title})</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Zweisprachige Erklärung
+    st.markdown(
+        f"""
+        <div style="background-color: rgba(33, 150, 243, 0.08); border-left: 5px solid #1976d2; padding: 12px 14px; border-radius: 4px;">
+            <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">
+                ℹ️ Meaning <span style="font-size: 0.82em; color: #888; font-weight: normal;">(Bedeutung)</span>:
+            </div>
+            <div style="font-size: 0.95rem; line-height: 1.5;">
+                {en_desc} <span style="font-size: 0.85em; color: #777;">({de_desc})</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
   
