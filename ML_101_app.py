@@ -117,11 +117,8 @@ PROFILES = {
 # Benutzeroberfläche
 # -------------------------------
 st.markdown(
-    '<h2>🧠 Personality Profile Predictor ',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '<span style="font-size: 1.6em; color: #888; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h2>',
+    '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🧠 Personality Profile Predictor '
+    '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
     unsafe_allow_html=True,
 )
 st.divider()
