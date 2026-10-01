@@ -17,14 +17,22 @@ model = joblib.load("best_personality_model.joblib")
 st.markdown(
     """
     <style>
-    /* Plastischer 3D-Button in dezentem Anthrazit/Grau */
+    /* 1. Oberen Leerraum reduzieren */
+    .block-container {
+        padding-top: 1.5rem !important;
+        padding-bottom: 2rem !important;
+        max-width: 920px !important; /* Optimale Breite für einzeilige Skalen */
+    }
+
+    /* 2. Plastischer 3D-Button (etwas größer & dezent grau) */
     div.stButton > button {
         background: linear-gradient(180deg, #3a3f47 0%, #2b2f36 100%) !important;
         color: #ffffff !important;
         border: 1px solid #1f2227 !important;
         border-bottom: 4px solid #16181b !important;
         border-radius: 8px !important;
-        padding: 10px 24px !important;
+        padding: 12px 28px !important;
+        font-size: 1.15rem !important;
         font-weight: 600 !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
         transition: all 0.1s ease-in-out !important;
@@ -37,6 +45,11 @@ st.markdown(
         border-bottom-width: 1px !important;
         transform: translateY(3px) !important;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* 3. Dropdown-Schriftgröße vergrößern */
+    div[data-baseweb="select"] {
+        font-size: 1.1rem !important;
     }
     </style>
     """,
@@ -204,4 +217,3 @@ if button_clicked:
     )
 
 
-    
