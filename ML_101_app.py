@@ -29,21 +29,23 @@ st.markdown(
         background: linear-gradient(180deg, #3a3f47 0%, #2b2f36 100%) !important;
         color: #ffffff !important;
         border: 1px solid #1f2227 !important;
-        border-bottom: 4px solid #16181b !important;
+        border-bottom: 5px solid #16181b !important;
         border-radius: 8px !important;
-        padding: 12px 28px !important;
+        padding: 14px 16px !important;
         font-size: 1.15rem !important;
         font-weight: 600 !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-        transition: all 0.1s ease-in-out !important;
+        white-space: pre-line !important; /* Ermöglicht saubere Zeilenumbrüche */
+        line-height: 1.3 !important;
     }
-    div.stButton > button:hover {
-        background: linear-gradient(180deg, #444a54 0%, #323740 100%) !important;
-        border-color: #2b2f36 !important;
+    div.stButton > button p:last-child {
+        font-size: 0.85em !important;
+        color: #b0b0b0 !important;
+        font-weight: normal !important;
     }
     div.stButton > button:active {
         border-bottom-width: 1px !important;
-        transform: translateY(3px) !important;
+        transform: translateY(4px) !important;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
     }
 
@@ -220,4 +222,3 @@ with col_res:
             unsafe_allow_html=True,
         )
 
-        
