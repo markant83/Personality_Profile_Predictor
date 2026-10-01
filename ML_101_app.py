@@ -75,26 +75,18 @@ QUESTIONS = {
 
 PROFILES = {
     "Resilient": (
-        "Resilient",
-        "Widerstandsfähig / Stressresistent",
         "Emotionally stable, adaptable, and handles stress well.",
         "Emotional stabil, anpassungsfähig und stressresistent.",
     ),
     "Undercontroller": (
-        "Undercontroller",
-        "Impulsiv / Gering reguliert",
         "More impulsive, spontaneous, and prone to low self-regulation.",
         "Eher impulsiv, spontan und geringe Selbstkontrolle.",
     ),
     "Overcontroller": (
-        "Overcontroller",
-        "Überkontrolliert / Gehemmt",
         "Highly conscientious, cautious, and security-oriented.",
         "Sehr gewissenhaft, gehemmt und sicherheitsorientiert.",
     ),
     "Moderate": (
-        "Moderate",
-        "Ausgeglichen / Durchschnittlich",
         "Balanced average profile without prominent extremes.",
         "Ausgeglichenes Durchschnittsprofil ohne extreme Ausschläge.",
     ),
@@ -172,38 +164,26 @@ button_clicked = st.button("Predict Profile (Profil berechnen)", type="primary")
 
 if button_clicked:
     pred = str(model.predict(pd.DataFrame([input_dict]))[0])
-    en_title, de_title, en_desc, de_desc = PROFILES.get(
-        pred, (pred, pred, "No description available.", "Keine Beschreibung verfügbar.")
+    en_desc, de_desc = PROFILES.get(
+        pred, ("No description available.", "Keine Beschreibung verfügbar.")
     )
 
-    # Zweisprachige Ergebnis-Box
+    # Ergebnis-Box: Nur der Profilname ohne Klammern
     st.markdown(
         f"""
-        <div style="background-color: rgba(46, 125, 50, 0.12); border-left: 5px solid #2e7d32; padding: 14px; border-radius: 4px; margin-bottom: 15px;">
-            <div style="font-size: 0.9rem; color: #555; margin-bottom: 4px;">
+        <div style="background-color: rgba(46, 125, 50, 0.12); border-left: 5px solid #2e7d32; padding: 14px; border-radius: 4px; margin-bottom: 12px;">
+            <div style="font-size: 0.85rem; color: #555; margin-bottom: 2px;">
                 <strong>Predicted Personality Profile</strong> <span style="font-size: 0.82em; color: #888;">(Vorhergesagtes Persönlichkeitsprofil)</span>
             </div>
             <div style="font-size: 1.45rem; font-weight: bold; color: #1b5e20;">
-                {en_title} <span style="font-size: 0.72em; font-weight: normal; color: #666;">({de_title})</span>
+                {pred}
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # Zweisprachige Erklärung
-    st.markdown(
-        f"""
-        <div style="background-color: rgba(33, 150, 243, 0.08); border-left: 5px solid #1976d2; padding: 12px 14px; border-radius: 4px;">
-            <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">
-                ℹ️ Meaning <span style="font-size: 0.82em; color: #888; font-weight: normal;">(Bedeutung)</span>:
-            </div>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
-                {en_desc} <span style="font-size: 0.85em; color: #777;">({de_desc})</span>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    # Info-Feld: Ohne Überschrift, direkt Erklärung mit dezentem Deutsch
+    st.info(f"{en_desc} :gray[({de_desc})]")
 
   
