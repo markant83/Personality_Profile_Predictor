@@ -17,18 +17,26 @@ model = joblib.load("best_personality_model.joblib")
 st.markdown(
     """
     <style>
-    /* Styling für das kleinere, graue Deutsch in Selectboxen */
-    div[data-baseweb="select"] span.de-sub {
-        font-size: 0.82em;
-        color: #888;
-        margin-left: 5px;
+    /* Plastischer 3D-Button in dezentem Anthrazit/Grau */
+    div.stButton > button {
+        background: linear-gradient(180deg, #3a3f47 0%, #2b2f36 100%) !important;
+        color: #ffffff !important;
+        border: 1px solid #1f2227 !important;
+        border-bottom: 4px solid #16181b !important;
+        border-radius: 8px !important;
+        padding: 10px 24px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+        transition: all 0.1s ease-in-out !important;
     }
-    /* Styling für den Predict-Button */
-    div.stButton > button span.de-btn {
-        font-size: 0.82em;
-        opacity: 0.8;
-        font-weight: normal;
-        margin-left: 6px;
+    div.stButton > button:hover {
+        background: linear-gradient(180deg, #444a54 0%, #323740 100%) !important;
+        border-color: #2b2f36 !important;
+    }
+    div.stButton > button:active {
+        border-bottom-width: 1px !important;
+        transform: translateY(3px) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
     }
     </style>
     """,
@@ -168,24 +176,26 @@ if button_clicked:
         pred, ("No description available.", "Keine Beschreibung verfügbar.")
     )
 
-    # 1. Ergebnis-Box: Grüner Rand, weiße fette Schrift
+    # Geteilte Box im Flex-Layout (gleiche Höhe, einheitliches Grün)
     st.markdown(
         f"""
-        <div style="background-color: rgba(46, 125, 50, 0.25); border-left: 5px solid #4caf50; 
-                    padding: 14px 18px; border-radius: 6px; margin-bottom: 12px;
-                    font-size: 1.5rem; font-weight: 700; color: #ffffff;">
-            {pred}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # 2. Erklärungs-Box: Blauer Rand, weiße Schrift, Deutsch leicht kleiner & hellgrau
-    st.markdown(
-        f"""
-        <div style="background-color: rgba(33, 150, 243, 0.20); border-left: 5px solid #2196f3; 
-                    padding: 12px 16px; border-radius: 6px; font-size: 0.95rem; line-height: 1.5; color: #ffffff;">
-            ℹ️ {en_desc} <span style="font-size: 0.85em; color: #d0d0d0;">({de_desc})</span>
+        <div style="display: flex; align-items: stretch; background-color: rgba(46, 125, 50, 0.25); 
+                    border: 1px solid rgba(76, 175, 80, 0.5); border-left: 5px solid #4caf50; 
+                    border-radius: 8px; margin-top: 15px; overflow: hidden;">
+            <!-- Linke Spalte: Ergebnis -->
+            <div style="flex: 0 0 35%; display: flex; align-items: center; justify-content: center; 
+                        padding: 16px 20px; font-size: 1.45rem; font-weight: 700; color: #ffffff; text-align: center;">
+                {pred}
+            </div>
+            <!-- Schwarzer Trennbalken -->
+            <div style="width: 2px; background-color: #111111; opacity: 0.8;"></div>
+            <!-- Rechte Spalte: Erklärung -->
+            <div style="flex: 1; display: flex; align-items: center; padding: 14px 20px; 
+                        font-size: 0.95rem; line-height: 1.5; color: #ffffff;">
+                <div>
+                    {en_desc} <span style="font-size: 0.85em; color: #d0d0d0;">({de_desc})</span>
+                </div>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
