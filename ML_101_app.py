@@ -104,7 +104,7 @@ PROFILES = {
 # Benutzeroberfläche
 # -------------------------------
 st.markdown(
-    '<h2>🧠 Personality Profile Predictor '
+    '<h2>🧠 Personality Profile Predictor ',
     unsafe_allow_html=True,
 )
 st.markdown(
