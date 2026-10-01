@@ -39,19 +39,24 @@ st.markdown(
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        font-size: 1.05rem !important;
-        font-weight: 600 !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-        line-height: 1.25 !important;
-        white-space: pre-line !important;
         transition: all 0.1s ease-in-out !important;
     }
+    /* 1. Zeile: Englisch (1.05rem, weiß, fett) */
+    div.stButton > button div,
     div.stButton > button p {
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        color: #ffffff !important;
         margin: 0 !important;
+        line-height: 1.25 !important;
+        white-space: pre-line !important;
     }
-    div.stButton > button p:last-child {
-        font-size: 0.82em !important;
-        color: #b0b0b0 !important;
+    /* 2. Zeile: Deutsch (0.88rem, hellgrau) */
+    div.stButton > button p:last-child,
+    div.stButton > button div:last-child {
+        font-size: 0.88rem !important;
+        color: #cfcfcf !important;
         font-weight: normal !important;
     }
     div.stButton > button:hover {
@@ -237,5 +242,5 @@ with col_res:
             """,
             unsafe_allow_html=True,
         )
-        
+
 
