@@ -8,3 +8,4 @@ codebook.txt
 *.png
 data/
 *.csv
+mlflow.db
