@@ -19,13 +19,22 @@ model = joblib.load("best_personality_model.joblib")
 st.markdown(
     """
     <style>
-    /* Slider-Spur & Knopf auf Royalblau (#4169e1) */
-    div[data-baseweb="slider"] div[role="slider"] {
-        background-color: #4169e1 !important;
+    /* Slider: Aktiver Balken links */
+    div[data-testid="stSlider"] div[data-baseweb="slider"] > div > div:first-child {
+        background: #4169e1 !important;
     }
-    div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div {
+    /* Slider: Anfasser-Knopf (runder Punkt) */
+    div[data-testid="stSlider"] div[role="slider"] {
         background-color: #4169e1 !important;
+        border-color: #4169e1 !important;
+        box-shadow: 0 0 8px rgba(65, 105, 225, 0.7) !important;
     }
+    /* Zahl über dem Slider */
+    div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
+        color: #4169e1 !important;
+        font-weight: 700 !important;
+    }
+
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
         padding-top: 1.5rem !important;
