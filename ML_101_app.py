@@ -16,16 +16,16 @@ model = joblib.load("best_personality_model.joblib")
 # -------------------------------
 # Globale CSS-Stile
 # -------------------------------
-/* Slider-Spur & Knopf auf Royalblau (#4169e1) */
-div[data-baseweb="slider"] div[role="slider"] {
-    background-color: #4169e1 !important;
-}
-div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div {
-    background-color: #4169e1 !important;
-}
 st.markdown(
     """
     <style>
+    /* Slider-Spur & Knopf auf Royalblau (#4169e1) */
+    div[data-baseweb="slider"] div[role="slider"] {
+        background-color: #4169e1 !important;
+    }
+    div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div {
+        background-color: #4169e1 !important;
+    }
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
         padding-top: 1.5rem !important;
