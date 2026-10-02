@@ -63,6 +63,9 @@ st.markdown(
         background: linear-gradient(180deg, #444a54 0%, #323740 100%) !important;
         border-color: #2b2f36 !important;
     }
+    div.stButton > button:hover {
+    box-shadow: 0 0 16px rgba(65, 105, 225, 0.4) !important;
+    }
     div.stButton > button:active {
         border-bottom-width: 1px !important;
         transform: translateY(4px) !important;
