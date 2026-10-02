@@ -235,18 +235,18 @@ with col_res:
             pred, ("No description available.", "Keine Beschreibung verfügbar.")
         )
 
-        st.markdown(
+st.markdown(
             f"""
-            <div style="display: flex; align-items: stretch; background-color: rgba(46, 125, 50, 0.25); 
-                        border: 1px solid rgba(76, 175, 80, 0.5); border-left: 6px solid #4caf50; 
-                        border-radius: 8px; overflow: hidden; height: 85px;">
+            <div style="display: flex; align-items: stretch; background-color: rgba(65, 105, 225, 0.18); 
+                        border: 1px solid rgba(65, 105, 225, 0.45); border-left: 6px solid #4169e1; 
+                        border-radius: 8px; overflow: hidden; height: 85px; box-shadow: 0 4px 12px rgba(65, 105, 225, 0.15);">
                 <!-- Linker Teil: Profilname -->
                 <div style="flex: 0 0 28%; display: flex; align-items: center; justify-content: center; 
                             padding: 10px 14px; font-size: 1.45rem; font-weight: 700; color: #ffffff; text-align: center;">
                     {pred}
                 </div>
                 <!-- Trenner -->
-                <div style="width: 2px; background-color: #111111; opacity: 0.8;"></div>
+                <div style="width: 2px; background-color: rgba(255, 255, 255, 0.15);"></div>
                 <!-- Rechter Teil: Je eine Zeile Englisch & Deutsch -->
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; 
                             padding: 10px 18px; gap: 3px; overflow: hidden;">
