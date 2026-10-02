@@ -16,7 +16,6 @@ model = joblib.load("best_personality_model.joblib")
 # -------------------------------
 # Globale CSS-Stile
 # -------------------------------
-[theme]
 primaryColor = "#4169e1"   # Royalblau
 st.markdown(
     """
