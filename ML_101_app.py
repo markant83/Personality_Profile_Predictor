@@ -237,8 +237,8 @@ with col_res:
 
         st.markdown(
             f"""
-            <div style="display: flex; align-items: stretch; background-color: rgba(46, 125, 50, 0.25); 
-                        border: 1px solid rgba(76, 175, 80, 0.5); border-left: 6px solid #4caf50; 
+            <div style="display: flex; align-items: stretch; background-color: rgba(65, 105, 225, 0.20); 
+                        border: 1px solid rgba(65, 105, 225, 0.5); border-left: 6px solid #4169e1; 
                         border-radius: 8px; overflow: hidden; height: 85px;">
                 <!-- Linker Teil: Profilname -->
                 <div style="flex: 0 0 28%; display: flex; align-items: center; justify-content: center; 
@@ -261,5 +261,3 @@ with col_res:
             """,
             unsafe_allow_html=True,
         )
-
-
