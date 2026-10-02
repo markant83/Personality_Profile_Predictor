@@ -158,7 +158,7 @@ PROFILES = {
 # Benutzeroberfläche
 # -------------------------------
 st.markdown(
-    '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🧠 Personality Profile Predictor '
+    '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
     '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
     unsafe_allow_html=True,
 )
