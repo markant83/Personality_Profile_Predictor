@@ -218,9 +218,9 @@ for col, (en_text, de_text) in QUESTIONS.items():
 st.divider()
 
 # -------------------------------
-# Inferenz & 2-Spalten-Layout (1 : 3)
+# Inferenz & 2-Spalten-Layout (1 : 4)
 # -------------------------------
-col_btn, col_res = st.columns([1, 3], gap="medium")
+col_btn, col_res = st.columns([1, 4], gap="medium")
 
 with col_btn:
     button_clicked = st.button(
@@ -240,20 +240,20 @@ with col_res:
             <div style="display: flex; align-items: stretch; background-color: rgba(65, 105, 225, 0.20); 
                         border: 1px solid rgba(65, 105, 225, 0.5); border-left: 6px solid #4169e1; 
                         border-radius: 8px; overflow: hidden; height: 85px;">
-                <!-- Linker Teil: Profilname -->
-                <div style="flex: 0 0 28%; display: flex; align-items: center; justify-content: center; 
-                            padding: 10px 14px; font-size: 1.45rem; font-weight: 700; color: #ffffff; text-align: center;">
+                <!-- Linker Teil: Profilname (kompakter für mehr Platz rechts) -->
+                <div style="flex: 0 0 22%; display: flex; align-items: center; justify-content: center; 
+                            padding: 8px 10px; font-size: 1.35rem; font-weight: 700; color: #ffffff; text-align: center;">
                     {pred}
                 </div>
                 <!-- Trenner -->
                 <div style="width: 2px; background-color: #111111; opacity: 0.8;"></div>
-                <!-- Rechter Teil: Je eine Zeile Englisch & Deutsch -->
+                <!-- Rechter Teil: Breiterer Textbereich -->
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; 
-                            padding: 10px 18px; gap: 3px; overflow: hidden;">
-                    <div style="font-size: 1.05rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            padding: 8px 16px; gap: 3px; overflow: hidden;">
+                    <div style="font-size: 0.98rem; color: #ffffff; line-height: 1.25;">
                         {en_desc}
                     </div>
-                    <div style="font-size: 0.88rem; color: #cfcfcf; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <div style="font-size: 0.82rem; color: #cfcfcf; line-height: 1.2;">
                         ({de_desc})
                     </div>
                 </div>
@@ -261,3 +261,4 @@ with col_res:
             """,
             unsafe_allow_html=True,
         )
+        
