@@ -16,7 +16,13 @@ model = joblib.load("best_personality_model.joblib")
 # -------------------------------
 # Globale CSS-Stile
 # -------------------------------
-primaryColor = "#4169e1"   # Royalblau
+/* Slider-Spur & Knopf auf Royalblau (#4169e1) */
+div[data-baseweb="slider"] div[role="slider"] {
+    background-color: #4169e1 !important;
+}
+div[data-baseweb="slider"] div[data-testid="stSliderTickBar"] + div {
+    background-color: #4169e1 !important;
+}
 st.markdown(
     """
     <style>
