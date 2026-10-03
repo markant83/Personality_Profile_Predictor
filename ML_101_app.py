@@ -176,7 +176,7 @@ with col1:
 
     st.write("")
     bilingual_label("Age", "Alter")
-    age = st.slider("Age", 10, 111, 45, label_visibility="collapsed")
+    age = st.slider("Age", 10, 120, 45, label_visibility="collapsed")
 
 with col2:
     bilingual_label("Handedness", "Händigkeit")
