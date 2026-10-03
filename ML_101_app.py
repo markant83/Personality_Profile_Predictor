@@ -129,7 +129,7 @@ QUESTIONS = {
     "E4": ("I keep in the background.", "Ich halte mich im Hintergrund."),
     "E5": ("I start conversations.", "Ich beginne oft Gespräche."),
     "E7": ("I talk to a lot of different people at parties.", "Auf Feiern spreche ich mit vielen verschiedenen Leuten."),
-    "E9": ("I don't mind being the center of attention.", "Es stört mich nicht, im Mittelpunkt der Aufmerksamkeit zu stehen."),
+    "E9": ("I don't mind being the center of attention.", "Es stört mich nicht, im Mittelpunkt zu stehen."),
     "E10": ("I am quiet around strangers.", "In der Nähe von Fremden bin ich eher ruhig."),
     "C4": ("I make a mess of things.", "Ich bringe Dinge oft durcheinander."),
     "A4": ("I sympathize with others' feelings.", "Ich habe Mitgefühl für die Gefühle anderer."),
