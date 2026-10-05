@@ -45,6 +45,9 @@ Strukturierter End-to-End-Workflow:
   * Bester Cross-Validation-Score (F1-Macro): **~0.7944**
   * Test-Set Accuracy: **~86.1 %** auf ungesehenen Testdaten
 
+### Fazit
+Nach der Evaluierung von drei Basis-Modellen (Logistic Regression mit Macro-F1 von 0,7671, Random Forest mit 0,7397 und HistGradientBoosting mit 0,7954) zeigte der HistGradientBoostingClassifier die stärkste anfängliche Leistung. Nach der Hyperparameter-Optimierung über GridSearchCV (beim systematischen Testen von 27 Kombinationen aus learning_rate, max_leaf_nodes und min_samples_leaf über eine 3-Fold Cross-Validation) erzielte die Konfiguration mit learning_rate=0.1, max_leaf_nodes=31 und min_samples_leaf=10 den besten mittleren CV-Score von 0,7944. Auf dem ungesehenen Testdatensatz erreichte die finale Pipeline eine Test-Accuracy von 86,13 %. Aufgrund der überlegenen Balance aus Klassen-F1-Werten, schneller Inferenzzeit und robuster Generalisierung wurde diese Pipeline als finales Modell für das Deployment via Streamlit ausgewählt.
+
 ### So verwendest du die App
 Die Streamlit-App (`app.py`) dient als Frontend für das exportierte Modell:
 1. **Interaktive Eingabe:** Nutzer beantworten 19 Fragen auf einer 5-stufigen Likert-Skala (von *Trifft gar nicht zu* bis *Trifft voll zu*) und geben demografische Daten an.
