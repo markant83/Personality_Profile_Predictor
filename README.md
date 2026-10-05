@@ -25,7 +25,7 @@ Eine interaktive Machine-Learning-Webanwendung auf Basis von **Streamlit** und *
 ---
 
 ### 2. Die Anwendung & der Persönlichkeitstest
-Die Streamlit-App (`ML_101_app.py`) dient als Frontend für das exportierte Modell:
+Die Streamlit-App (`app.py`) dient als Frontend für das exportierte Modell:
 1. **Interaktive Eingabe:** Nutzer beantworten Fragen auf einer 5-stufigen Likert-Skala (von *Trifft gar nicht zu* bis *Trifft voll zu*) und geben demografische Daten an.
 2. **Echtzeit-Inferenz:** Die Eingaben werden strukturiert, durch die vortrainierte Pipeline transformiert und direkt klassifiziert.
 3. **Ergebnisdarstellung:** Ausgabe des prognostizierten Persönlichkeitstyps inklusive Profilbeschreibung.
@@ -61,13 +61,13 @@ pip install -r requirements.txt
 
 ### 4. Anwendung starten
 ```bash
-streamlit run ML_101_app.py
+streamlit run app.py
 ```
 Die App öffnet sich anschließend automatisch im Browser unter `http://localhost:8501`.
 
 *(Optional)* Falls das Modell neu trainiert werden soll:
 ```bash
-python ML_101_qwert.py
+python model.py
 ```
 
 ---
@@ -77,3 +77,4 @@ python ML_101_qwert.py
 * **ML & Datenverarbeitung:** Scikit-Learn, Pandas, NumPy
 * **Deployment & UI:** Streamlit, Joblib
 * **Experiment-Tracking:** MLflow
+
