@@ -166,29 +166,11 @@ PROFILES = {
 # -------------------------------
 # Benutzeroberfläche
 # -------------------------------
-# st.markdown(
-#     '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
-#     '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
-#     unsafe_allow_html=True,
-# )
-
 st.markdown(
-    """
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
-        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Fisch-Silhouette -->
-            <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z" />
-            <path d="M18 12h.01" />
-            <path d="M2 8l4.5 4L2 16" />
-        </svg>
-        <h1 style="margin: 0; padding: 0; font-size: 2.2rem; font-weight: 700; color: #ffffff;">
-            Personality Profile Predictor
-        </h1>
-    </div>
-    """,
+    '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
+    '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
     unsafe_allow_html=True,
 )
-
 st.divider()
 
 col1, col2 = st.columns(2)
