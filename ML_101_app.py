@@ -93,11 +93,6 @@ st.markdown(
         font-size: 1.1rem !important;
     }
 
-    /* Dezent animierter Tiefsee-Hintergrund */
-    .stApp {
-    background: radial-gradient(circle at 50% 0%, #111a2e 0%, #0e1117 70%) !important;
-    }
-
     /* Subtile Trennlinie wie eine Meeresoberfläche */
     hr {
     border: none !important;
@@ -105,21 +100,6 @@ st.markdown(
     background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.4), transparent) !important;
     margin: 1.5rem 0 !important;
     }
-
-    /* Dezent sichtbarer Fisch als Hintergrund-Wasserzeichen */
-.stApp::after {
-    content: "";
-    position: fixed;
-    bottom: 25px;
-    right: 35px;
-    width: 140px;
-    height: 80px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234169e1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z"/><path d="M18 12h.01"/><path d="M2 8l4.5 4L2 16"/></svg>') no-repeat center;
-    background-size: contain;
-    opacity: 0.25; /* Sichtbar, aber nicht im Weg */
-    pointer-events: none;
-    z-index: 0;
-}
 
     </style>
     """,
@@ -186,11 +166,29 @@ PROFILES = {
 # -------------------------------
 # Benutzeroberfläche
 # -------------------------------
+# st.markdown(
+#     '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
+#     '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
+#     unsafe_allow_html=True,
+# )
+
 st.markdown(
-    '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
-    '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
+    """
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Fisch-Silhouette -->
+            <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z" />
+            <path d="M18 12h.01" />
+            <path d="M2 8l4.5 4L2 16" />
+        </svg>
+        <h1 style="margin: 0; padding: 0; font-size: 2.2rem; font-weight: 700; color: #ffffff;">
+            Personality Profile Predictor
+        </h1>
+    </div>
+    """,
     unsafe_allow_html=True,
 )
+
 st.divider()
 
 col1, col2 = st.columns(2)
