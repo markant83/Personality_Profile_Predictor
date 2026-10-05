@@ -106,6 +106,21 @@ st.markdown(
     margin: 1.5rem 0 !important;
     }
 
+    /* Dezent sichtbarer Fisch als Hintergrund-Wasserzeichen */
+.stApp::after {
+    content: "";
+    position: fixed;
+    bottom: 25px;
+    right: 35px;
+    width: 140px;
+    height: 80px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234169e1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z"/><path d="M18 12h.01"/><path d="M2 8l4.5 4L2 16"/></svg>') no-repeat center;
+    background-size: contain;
+    opacity: 0.25; /* Sichtbar, aber nicht im Weg */
+    pointer-events: none;
+    z-index: 0;
+}
+
     </style>
     """,
     unsafe_allow_html=True,
