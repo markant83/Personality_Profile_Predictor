@@ -61,7 +61,7 @@ Schritt-für-Schritt-Anleitung zur vollständigen Reproduktion des Projekts:
 
 ### 1. Repository klonen
 ```bash
-git clone [https://github.com/markant83/Personality_Profile_Predictor.git](https://github.com/markant83/Personality_Profile_Predictor.git)
+git clone https://github.com/markant83/Personality_Profile_Predictor.git
 cd Personality_Profile_Predictor
 ```
 
@@ -72,7 +72,7 @@ cd Personality_Profile_Predictor
    ```bash
    mkdir data
    ```
-3. Lege die heruntergeladene CSV-Datei direkt in diesem Ordner ab (z. B. als `data/data-final.csv`).
+3. Lege die heruntergeladene CSV-Datei direkt in diesem Ordner ab (z. B. als `data/data.csv`).
 
 ### 3. Umgebung erstellen & aktivieren
 * **Windows:**
