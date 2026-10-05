@@ -127,8 +127,10 @@ Strukturierter End-to-End-Workflow:
   * Test-Set Accuracy: **~86.1 %** auf ungesehenen Testdaten
 
 ### So verwendest du die App
-Der Benutzer beantwortet die 19 Fragen im Webinterface auf einer 5-stufigen Skala und gibt Alter sowie Geschlecht an. Nach der Eingabe führt die App eine Sofort-Inferenz durch und liefert den vorhergesagten Persönlichkeitstyp inklusive detaillierter Profilbeschreibung.
-
+Die Streamlit-App (`app.py`) dient als Frontend für das exportierte Modell:
+1. **Interaktive Eingabe:** Nutzer beantworten 19 Fragen auf einer 5-stufigen Likert-Skala (von *Trifft gar nicht zu* bis *Trifft voll zu*) und geben demografische Daten an.
+2. **Echtzeit-Inferenz:** Die Eingaben werden strukturiert, durch die vortrainierte Pipeline transformiert und direkt klassifiziert.
+3. **Ergebnisdarstellung:** Ausgabe des prognostizierten Persönlichkeitstyps inklusive Profilbeschreibung.
 ---
 
 ## 🚀 2. Einrichtung (Setup)
