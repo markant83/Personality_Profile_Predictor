@@ -108,7 +108,10 @@ Strukturierter End-to-End-Workflow:
 2. **Vorverarbeitungspipeline:**
    * Numerische Merkmale: Median-Imputation (`SimpleImputer`) + Standardisierung (`StandardScaler`).
    * Kategoriale Merkmale: Modus-Imputation (`SimpleImputer`, `most_frequent`) + One-Hot-Encoding (`OneHotEncoder`).
-3. **Modellierung & Tuning:** 5-Fold Cross-Validation (Logistic Regression, Random Forest, HistGradientBoosting) und Hyperparameter-Optimierung via Rastersuche/Zufallssuche.
+3. **Modellvergleich & Tuning:**
+   * Vergleich via 5-Fold Cross-Validation: Logistic Regression, Random Forest und HistGradientBoosting.
+   * Sieger-Modell: **HistGradientBoostingClassifier**.
+   * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`) optimiert auf **F1-Macro-Score** (ungewichtetes Mittel über alle 5 Persönlichkeitsklassen):
 4. **Speichern des besten Modells:** Export der trainierten Gesamt-Pipeline als serialisierte Datei (`joblib`).
 5. **Streamlit-App:** Bereitstellung des Modells in einem interaktiven Webinterface (`app.py`).
 
