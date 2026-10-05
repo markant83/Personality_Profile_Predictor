@@ -92,6 +92,20 @@ st.markdown(
     div[data-baseweb="select"] {
         font-size: 1.1rem !important;
     }
+
+    /* Dezent animierter Tiefsee-Hintergrund */
+    .stApp {
+    background: radial-gradient(circle at 50% 0%, #111a2e 0%, #0e1117 70%) !important;
+    }
+
+    /* Subtile Trennlinie wie eine Meeresoberfläche */
+    hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.4), transparent) !important;
+    margin: 1.5rem 0 !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True,
