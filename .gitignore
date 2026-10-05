@@ -2,8 +2,6 @@ venv/
 __pycache__/
 *.db
 mlruns/
-*.py
-!ML_101_app.py
 codebook.txt
 *.png
 data/
