@@ -35,6 +35,10 @@ st.markdown(
         font-weight: 700 !important;
     }
 
+    div[data-testid="stSlider"] {
+        margin-top: 0.5rem !important;
+    }
+
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
         padding-top: 3.5rem !important;
