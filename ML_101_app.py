@@ -166,11 +166,30 @@ PROFILES = {
 # -------------------------------
 # Benutzeroberfläche
 # -------------------------------
+# st.markdown(
+#     '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
+#     '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
+#     unsafe_allow_html=True,
+# )
+
 st.markdown(
-    '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
-    '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
+    """
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.4));">
+            <!-- Fisch-Körper & Flosse -->
+            <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z" />
+            <path d="M18 12h.01" />
+            <path d="M2 7l4.5 5L2 17" />
+        </svg>
+        <h1 style="font-size: 2.2rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
+            Personality Profile Predictor 
+            <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
+        </h1>
+    </div>
+    """,
     unsafe_allow_html=True,
 )
+
 st.divider()
 
 col1, col2 = st.columns(2)
