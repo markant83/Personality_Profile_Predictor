@@ -104,16 +104,20 @@ Es handelt sich um eine überwachte Mehrklassen-Klassifikation (*Supervised Mult
 
 ### Der Ansatz
 Strukturierter End-to-End-Workflow:
-1. **EDA:** Plausibilisierung von Geburtsjahren, Bereinigung unplausibler Extremwerte (Alter > 120) und Multikollinearitätsprüfung mittels Pearson-Korrelationsmatrix (|r| < 0.85).
-2. **Vorverarbeitungspipeline:**
+1. **EDA:**
+   * Automatische Erkennung und Umrechnung von Geburtsjahren in das tatsächliche Alter.
+   * Filterung unplausibler Extremwerte (Alter > 120).
+   * Validierung der Likert-Werte (Bereich 1 bis 5) mit Median-Imputation.
+   * Multikollinearitätsprüfung mittels Pearson-Korrelationsmatrix (|r| > 0.85).
+3. **Vorverarbeitungspipeline:**
    * Numerische Merkmale: Median-Imputation (`SimpleImputer`) + Standardisierung (`StandardScaler`).
    * Kategoriale Merkmale: Modus-Imputation (`SimpleImputer`, `most_frequent`) + One-Hot-Encoding (`OneHotEncoder`).
-3. **Modellvergleich & Tuning:**
+4. **Modellvergleich & Tuning:**
    * Vergleich via 5-Fold Cross-Validation: Logistic Regression, Random Forest und HistGradientBoosting.
    * Sieger-Modell: **HistGradientBoostingClassifier**.
    * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`) optimiert auf **F1-Macro-Score** (ungewichtetes Mittel über alle 5 Persönlichkeitsklassen):
-4. **Speichern des besten Modells:** Export der trainierten Gesamt-Pipeline als serialisierte Datei (`joblib`).
-5. **Streamlit-App:** Bereitstellung des Modells in einem interaktiven Webinterface (`app.py`).
+5. **Speichern des besten Modells:** Export der trainierten Gesamt-Pipeline als serialisierte Datei (`joblib`).
+6. **Streamlit-App:** Bereitstellung des Modells in einem interaktiven Webinterface (`app.py`).
 
 ### Das Ergebnis
 * **Bestes Modell:** `HistGradientBoostingClassifier`
