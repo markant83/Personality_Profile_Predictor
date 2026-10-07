@@ -107,7 +107,9 @@ Die App öffnet sich anschließend automatisch im Browser unter `http://localhos
 
 ---
 
-### 7. Streamlit-App im web starten
+<details>
+<summary><h3 style="display:inline;">7. Streamlit-App im web starten</h3></summary>
+ 
 Entferne die Zeile `*.joblib` aus der `.gitignore`.
 Führe im Terminal folgende Befehle aus:
 ```bash
@@ -116,11 +118,10 @@ git commit -m "Add joblib model to repo"
 git push
 ```
 Die App kann anschließend im Browser unter `https://personality-profile-predictor-mb.streamlit.app` geöffnet werden.
-
----
+</details>
 
 <details>
-<summary><b>8. Modell wieder aus dem repository entfernen</b></summary>
+<summary><h3 style="display:inline;">8. Modell wieder aus dem Repository entfernen</h3></summary>
 
 Füge die Zeile `*.joblib` der `.gitignore` hinzu.
 
