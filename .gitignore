@@ -7,3 +7,4 @@ codebook.txt
 data/
 *.csv
 mlflow.db
+*.joblib
