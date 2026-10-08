@@ -23,20 +23,36 @@ Es handelt sich um eine überwachte Mehrklassen-Klassifikation (*Supervised Mult
 
 ### Der Ansatz
 Strukturierter End-to-End-Workflow:
-1. **EDA:**
-   * Automatische Erkennung und Umrechnung von Geburtsjahren in das tatsächliche Alter.
-   * Filterung unplausibler Extremwerte (Alter > 120).
-   * Validierung der Likert-Werte (Bereich 1 bis 5) mit Median-Imputation.
-   * Multikollinearitätsprüfung mittels Pearson-Korrelationsmatrix (|r| > 0.85).
-3. **Vorverarbeitungspipeline:**
+Um eine robuste Datenbasis für das Modelltraining sicherzustellen, durchlaufen die Rohdaten (~19.700 Einträge) eine mehrstufige Bereinigung und Validierung:
+
+1. **Explorative Datenanalyse (EDA) & Datenbereinigung:**
+   * **Altersbereinigung & Anomalie-Korrektur (`age`):**
+     * *Geburtsjahr-Erkennung:* 73 Einträge im Wertebereich von 1920 bis 2026 wurden als Geburtsjahre identifiziert und automatisiert in das biologische Alter umgerechnet (`2026 - Geburtsjahr`).
+     * *Extremwert-Filterung:* Unplausible Altersangaben (> 120 Jahre, z. B. Eingabefehler wie 999.999.999 oder 208) wurden identifiziert (9 Fälle) und auf `NaN` gesetzt, um spätere Modellverzerrungen zu vermeiden.
+   * **Validierung der Likert-Skalen:**
+     * Alle psychometrischen Fragebogen-Items (`N1`–`N10`, `E1`–`E10`, `C4`, `A4`) wurden auf den zulässigen Wertebereich von 1 bis 5 überprüft.
+     * Eine Zeile mit unzulässigen Nullen (`0`) über alle Skalen hinweg wurde erkannt und auf `NaN` gesetzt. Fehlwerte in den numerischen Features werden in der Trainingspipeline robust via **Median-Imputation** ersetzt.
+   * **Kategoriale Datenqualität & Imputationsstrategie:**
+     * Analyse der kategorialen Merkmale ergab minimale Fehlwerte in `gender` (24 Fälle / 0,12 %) und `hand` (100 Fälle / 0,51 %).
+     * Aufgrund der geringen Fehlquote (< 0,6 %) werden diese in der Pipeline deterministisch über den **Modus** (`most_frequent`: Female bzw. Right) imputiert und anschließend per One-Hot-Encoding transformiert.
+   * **Multikollinearitätsprüfung:**
+     * Berechnung der paarweisen Pearson-Korrelationsmatrix aller numerischen Prädiktoren mit einem Schwellenwert von |r| > 0.85.
+     * Ergebnis: Keine redundanten Variablen vorhanden (höchste beobachtete Korrelation liegt deutlich darunter), womit alle Items im Feature-Set verbleiben.
+   * **Zielklassen-Analyse (`target`):**
+     * Identifikation einer Klassenimbalance im Zielmerkmal: *Moderate* (42,86 %), *Resilient* (31,25 %), *Overcontroller* (14,35 %) und *Undercontroller* (11,54 %).
+     * Zur Wahrung der Klassenproportionen wird der Datensplit stratifiziert durchgeführt (`stratify=y`) und die Modellbewertung primär anhand des makro-gemittelten F1-Scores (`f1_macro`) vorgenommen.
+2. **Vorverarbeitungspipeline:**
    * Numerische Merkmale: Median-Imputation (`SimpleImputer`) + Standardisierung (`StandardScaler`).
    * Kategoriale Merkmale: Modus-Imputation (`SimpleImputer`, `most_frequent`) + One-Hot-Encoding (`OneHotEncoder`).
-4. **Modellvergleich & Tuning:**
-   * Vergleich via 5-Fold Cross-Validation: Logistic Regression, Random Forest und HistGradientBoosting.
+3. **Modellvergleich & Tuning:**
+   * Vergleich via 5-Fold Cross-Validation:
+     * Logistic Regression
+     * Random Forest
+     * HistGradientBoosting
    * Sieger-Modell: **HistGradientBoostingClassifier**.
    * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`) optimiert auf **F1-Macro-Score** (ungewichtetes Mittel über alle 5 Persönlichkeitsklassen):
-5. **Speichern des besten Modells:** Export der trainierten Gesamt-Pipeline als serialisierte Datei (`joblib`).
-6. **Streamlit-App:** Bereitstellung des Modells in einem interaktiven Webinterface (`app.py`).
+4. **Speichern des besten Modells:** Export der trainierten Gesamt-Pipeline als serialisierte Datei (`joblib`).
+5. **Streamlit-App:** Bereitstellung des Modells in einem interaktiven Webinterface (`app.py`).
 
 ### Das Ergebnis
 * **Bestes Modell:** `HistGradientBoostingClassifier`
