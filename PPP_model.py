@@ -166,7 +166,7 @@ preprocessor = ColumnTransformer(
 """Vergleicht Basis-Klassifikatoren anhand des makro-gemittelten F1-Scores zur Auswahl des besten Algorithmus."""
 print("=== 4. MODELLVERGLEICH (5-FOLD CV) ===\n")
 models = {
-    "Logistic Regression": LogisticRegression(max_iter=1000),
+    "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42),
     "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
     "HistGradientBoosting": HistGradientBoostingClassifier(random_state=42),
 }
