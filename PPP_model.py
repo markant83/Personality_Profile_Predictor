@@ -31,6 +31,8 @@ corrupted_indices = set()
 
 # 1.1 Altersbereinigung
 is_birth_year = df["age"].between(1920, 2026)
+birth_year_indices = set(df[is_birth_year].index)
+
 if is_birth_year.any():
     print(f"-> {is_birth_year.sum()} Geburtsjahre in 'age' erkannt und umgerechnet.")
     df.loc[is_birth_year, "age"] = 2026 - df.loc[is_birth_year, "age"]
@@ -64,9 +66,26 @@ for col in likert_cols:
 
 print(f"-> {total_invalid_likert_values} unzulässige Likert-Werte in {len(likert_corrupted_indices)} Zeilen gefunden und auf NaN gesetzt.")
 
-# 1.3 Zusammenfassung der Datenqualität
-affected_rows = len(corrupted_indices)
-pct_affected = (affected_rows / initial_rows) * 100
+# 1.3 Kategoriale Merkmale & Fehlwerte prüfen
+cat_summary_cols = ["gender", "hand"]
+print("\n-> Fehlwerte in kategorialen Spalten (werden in Pipeline via Modus imputiert):")
+for col in cat_summary_cols:
+    n_missing = df[col].isna().sum()
+    pct_missing = (n_missing / initial_rows) * 100
+    print(f"   - '{col}': {n_missing} fehlend ({pct_missing:.2f}%) | Häufigster Wert: {df[col].mode()[0]}")
+
+# 1.4 Verteilung der Zielvariable (Target)
+print("\n-> Verteilung der Zielklassen ('target'):")
+target_dist = df["target"].value_counts(normalize=True) * 100
+for label, pct in target_dist.items():
+    print(f"   - {label:<16}: {pct:5.2f}% ({df['target'].value_counts()[label]} Fälle)")
+
+# Zusammenfassung
+modified_rows = birth_year_indices | corrupted_indices
+print(f"\n-> Bereinigung abgeschlossen: {len(modified_rows)} Zeilen ({(len(modified_rows)/initial_rows)*100:.2f}%) bereinigt:")
+print(f"   - {len(birth_year_indices)} Zeilen: Geburtsjahr in Alter umgerechnet")
+print(f"   - {count_invalid_age} Zeilen: Alter > 120 auf NaN gesetzt")
+print(f"   - {len(likert_corrupted_indices)} Zeilen: unzulässige Likert-Werte auf NaN gesetzt")
 print()
 
 # -------------------------------------------------------------
