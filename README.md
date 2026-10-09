@@ -83,12 +83,15 @@ cd Personality_Profile_Predictor
 
 ### 2. Daten beschaffen
 1. Lade den Rohdatensatz über folgenden Google-Drive-Link herunter:
-   👉 `https://drive.google.com/file/d/1Qnc2hC9szsKlHiutJIttwhnxphGffn-2/view?usp=drive_link`
-2. Erstelle im Projektordner das Verzeichnis `data/` (sofern noch nicht vorhanden):
+   👉
+   ```bash
+   https://drive.google.com/file/d/1Qnc2hC9szsKlHiutJIttwhnxphGffn-2/view?usp=drive_link
+   ```
+3. Erstelle im Projektordner das Verzeichnis `data/` (sofern noch nicht vorhanden):
    ```bash
    mkdir data
    ```
-3. Lege die heruntergeladene CSV-Datei direkt in diesem Ordner ab (z. B. als `data/data.csv`).
+4. Lege die heruntergeladene CSV-Datei direkt in diesem Ordner ab (z. B. als `data/data.csv`).
 
 ### 3. Umgebung erstellen & aktivieren
 * **Windows:**
