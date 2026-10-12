@@ -50,19 +50,19 @@ Um eine robuste Datenbasis für das Modelltraining sicherzustellen, durchlaufen 
      * Random Forest
      * HistGradientBoosting
    * Sieger-Modell: **HistGradientBoostingClassifier**.
-   * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`) optimiert auf **F1-Macro-Score** (ungewichtetes Mittel über alle 5 Persönlichkeitsklassen):
+   * Hyperparameter-Optimierung über Rastersuche (`GridSearchCV`) optimiert auf **F1-Macro-Score** (ungewichtetes Mittel über alle 4 Persönlichkeitsklassen):
 4. **Speichern des besten Modells:** Export der trainierten Gesamt-Pipeline als serialisierte Datei (`joblib`).
 5. **Streamlit-App:** Bereitstellung des Modells in einem interaktiven Webinterface (`app.py`).
 
 ### Das Ergebnis
-* **Bestes Modell:** `HistGradientBoostingClassifier`
-* **Optimierungsmetrik:** F1-Macro-Score (ungewichteter Mittelwert über alle Zielklassen)
-* **Performance:**
-  * Bester Cross-Validation-Score (F1-Macro): **~0.7944**
-  * Test-Set Accuracy: **~86.1 %** auf ungesehenen Testdaten
+- **Bestes Modell:** `HistGradientBoostingClassifier`
+- **Optimierungsmetrik:** F1-Macro-Score (ungewichteter Mittelwert über alle Zielklassen)
+- **Performance:**
+  * Bester Cross-Validation-Score (F1-Macro): **~0.7960**
+  * Test-Set Accuracy: **~86.5 %** auf ungesehenen Testdaten
 
 ### Fazit
-Nach der Evaluierung von drei Basis-Modellen (Logistic Regression mit Macro-F1 von 0,7671, Random Forest mit 0,7397 und HistGradientBoosting mit 0,7954) zeigte der HistGradientBoostingClassifier die stärkste anfängliche Leistung. Nach der Hyperparameter-Optimierung über GridSearchCV (beim systematischen Testen von 27 Kombinationen aus learning_rate, max_leaf_nodes und min_samples_leaf über eine 3-Fold Cross-Validation) erzielte die Konfiguration mit learning_rate=0.1, max_leaf_nodes=31 und min_samples_leaf=10 den besten mittleren CV-Score von 0,7944. Auf dem ungesehenen Testdatensatz erreichte die finale Pipeline eine Test-Accuracy von 86,13 %. Aufgrund der überlegenen Balance aus Klassen-F1-Werten, schneller Inferenzzeit und robuster Generalisierung wurde diese Pipeline als finales Modell für das Deployment via Streamlit ausgewählt.
+Nach der Evaluierung von drei Basis-Modellen (Logistic Regression mit Macro-F1 von 0,7673, Random Forest mit 0,7428 und HistGradientBoosting mit 0,7995) zeigte der HistGradientBoostingClassifier die stärkste anfängliche Leistung. Nach der Hyperparameter-Optimierung über GridSearchCV (beim systematischen Testen von 27 Kombinationen aus learning_rate, max_leaf_nodes und min_samples_leaf über eine 3-Fold Cross-Validation) erzielte die Konfiguration mit learning_rate=0.1, max_leaf_nodes=15 und min_samples_leaf=20 den besten mittleren CV-Score von 0,7960. Auf dem ungesehenen Testdatensatz erreichte die finale Pipeline eine Test-Accuracy von 86,54 %. Aufgrund der überlegenen Balance aus Klassen-F1-Werten, schneller Inferenzzeit und robuster Generalisierung wurde diese Pipeline als finales Modell für das Deployment via Streamlit ausgewählt.
 
 ### So verwendest du die App
 Die Streamlit-App (`app.py`) dient als Frontend für das exportierte Modell:
