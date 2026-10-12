@@ -35,7 +35,7 @@ birth_year_indices = set(df[is_birth_year].index)
 
 if is_birth_year.any():
     print(f"-> {is_birth_year.sum()} Geburtsjahre in 'age' erkannt und umgerechnet.")
-    df.loc[is_birth_year, "age"] = 2026 - df.loc[is_birth_year, "age"]
+    df.loc[is_birth_year, "age"] = 2014 - df.loc[is_birth_year, "age"]
 
 invalid_age = df["age"] > 120
 count_invalid_age = invalid_age.sum()
