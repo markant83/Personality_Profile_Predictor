@@ -27,7 +27,7 @@ Um eine robuste Datenbasis für das Modelltraining sicherzustellen, durchlaufen 
 
 1. **Explorative Datenanalyse (EDA) & Datenbereinigung:**
    * **Altersbereinigung & Anomalie-Korrektur (`age`):**
-     * *Geburtsjahr-Erkennung:* 73 Einträge im Wertebereich von 1920 bis 2026 wurden als Geburtsjahre identifiziert und automatisiert in das biologische Alter umgerechnet (`2026 - Geburtsjahr`).
+     * *Geburtsjahr-Erkennung:* 73 Einträge im Wertebereich von 1920 bis 2012 wurden als Geburtsjahre identifiziert und automatisiert in das biologische Alter umgerechnet (`2012 - Geburtsjahr`).
      * *Extremwert-Filterung:* Unplausible Altersangaben (> 120 Jahre, z. B. Eingabefehler wie 999.999.999 oder 208) wurden identifiziert (9 Fälle) und auf `NaN` gesetzt, um spätere Modellverzerrungen zu vermeiden.
    * **Validierung der Likert-Skalen:**
      * Alle psychometrischen Fragebogen-Items (`N1`–`N10`, `E1`–`E10`, `C4`, `A4`) wurden auf den zulässigen Wertebereich von 1 bis 5 überprüft.
