@@ -48,7 +48,7 @@ st.markdown(
         width: 100%;
         background-color: #0e1117; /* Streamlit Dark-Mode Hintergrundfarbe */
         z-index: 999;
-        padding: 0.8rem 1rem 0 1rem;
+        padding: 0.6rem 0 0.1rem 0; /* Links und rechts auf 0 für perfekte Bündigkeit */
         box-shadow: none !important; /* 0 4px 10px rgba(0, 0, 0, 0.3);*/
     }
 
@@ -56,6 +56,7 @@ st.markdown(
     .sticky-header-content {
         max-width: 920px;
         margin: 0 auto;
+        padding: 0 1rem; /* Gleicher Abstand wie Streamlits Block-Container */
     }
     
     /* 1. Oberer Leerraum & Layoutbreite */
@@ -200,15 +201,16 @@ st.markdown(
     <div class="sticky-header">
         <div class="sticky-header-content">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <circle cx="19" cy="11" r="2" />
-                    <path d="M19 8v1" />
-                    <path d="M19 13v1" />
-                    <path d="M16 11h1" />
-                    <path d="M21 11h1" />
-            </svg>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
+                    <!-- Kopfprofil -->
+                    <path d="M4 21v-1a5 5 0 0 1 5-5h1.5a6 6 0 0 1 6-6V8a4 4 0 0 0-4-4H9.5a5.5 5.5 0 0 0-5.5 5.5V11" />
+                    <!-- Mindset-Zahnrad im Kopf -->
+                    <circle cx="15" cy="8" r="2.5" />
+                    <path d="M15 4.5v1" />
+                    <path d="M15 10.5v1" />
+                    <path d="M12 8h1" />
+                    <path d="M17 8h1" />
+                </svg>
                 <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
                     Personality Profile Predictor 
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
