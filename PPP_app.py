@@ -126,19 +126,20 @@ st.markdown(
     }
 
 /* Responsives Verhalten für Smartphones */
-   /* 1. Global: Seitliches Fliegen/Wackeln strikt sperren */
-    html, body, 
-    [data-testid="stAppViewContainer"], 
-    [data-testid="stMain"], 
-    .main, 
-    .block-container {
-        overflow-x: hidden !important;
-        max-width: 100vw !important;
-        box-sizing: border-box !important;
-    }
-
+  /* ==========================================
+       2. REINE SMARTPHONE-ANSICHT
+       ========================================== */
     @media (max-width: 768px) {
-        /* 2. Header: Größe auf 1.55rem angepasst (bricht nicht mehr ab) */
+        /* Seitliches Fliegen stoppen */
+        html, body, 
+        [data-testid="stAppViewContainer"], 
+        [data-testid="stMain"], 
+        .main {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+        }
+
+        /* Header mobil */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
@@ -149,35 +150,32 @@ st.markdown(
         }
 
         .sticky-header-content h1 {
-            font-size: 1.55rem !important;
+            font-size: 1.5rem !important;
             line-height: 1.2 !important;
-            font-weight: 700 !important;
-            word-break: normal !important;
             white-space: normal !important;
         }
 
         .sticky-header-content h1 span:first-child {
-            font-size: 1.4rem !important; /* Spirale links */
+            font-size: 1.35rem !important;
             margin-right: 6px !important;
-            vertical-align: -1px !important;
         }
 
         .sticky-header-content h1 span:last-child {
             display: block !important;
             font-size: 0.75rem !important;
-            font-weight: normal !important;
             color: #a0a0a0 !important;
             margin-top: 2px !important;
         }
 
-        /* 3. Abstand oben für das erste Feld (Geschlecht) */
+        /* Gender/Geschlecht wieder voll sichtbar machen */
         .block-container {
-            padding-top: 8.8rem !important;
+            padding-top: 9.6rem !important;
             padding-left: 0.8rem !important;
             padding-right: 0.8rem !important;
+            max-width: 100vw !important;
         }
 
-        /* 4. Body-Schriften dezent verkleinern */
+        /* Schriften mobil dezent anpassen */
         [data-testid="stWidgetLabel"] label, 
         [data-testid="stWidgetLabel"] p,
         .stMarkdown p {
@@ -187,47 +185,31 @@ st.markdown(
             word-break: break-word !important;
         }
 
-        /* Likert-Skalen Optionen */
-        div[role="radiogroup"] label p,
-        [data-testid="stSliderTickBar"] {
-            font-size: 0.78rem !important;
-        }
-
-        /* 5. Ergebnisfeld: Vertikal anordnen (Wert oben, Erklärung darunter) */
-        [data-testid="column"] {
-            width: 100% !important;
-            flex: 1 1 100% !important;
-            min-width: 100% !important;
-            margin-bottom: 0.5rem !important;
-        }
-
-        [data-testid="stMetric"] {
-            display: flex !important;
+        /* Ergebnisspalten zwingend untereinander brechen (kein 2-Spalten-Quetschen mehr) */
+        [data-testid="stHorizontalBlock"],
+        div[data-testid="stHorizontalBlock"] {
             flex-direction: column !important;
-            align-items: flex-start !important;
+            flex-wrap: wrap !important;
         }
 
-        [data-testid="stMetricLabel"] {
-            font-size: 0.85rem !important;
-            white-space: normal !important;
-            word-break: break-word !important;
+        [data-testid="column"],
+        div[data-testid="column"] {
             width: 100% !important;
+            min-width: 100% !important;
+            flex: 1 1 100% !important;
+            margin-bottom: 0.6rem !important;
         }
 
-        [data-testid="stMetricValue"] {
-            font-size: 1.2rem !important;
-            white-space: normal !important;
-            word-break: break-word !important;
-            margin: 2px 0 !important;
-        }
-
-        /* Textblöcke und Alert-Boxen im Ergebnisbereich */
+        /* Alle Texte im Ergebnisbereich vollständig anzeigen */
+        [data-testid="stMetric"], 
+        [data-testid="stMetricLabel"], 
+        [data-testid="stMetricValue"],
         [data-testid="stAlert"], 
         [data-testid="stNotification"] {
-            font-size: 0.85rem !important;
-            padding: 0.6rem !important;
             white-space: normal !important;
             word-break: break-word !important;
+            overflow: visible !important;
+            width: 100% !important;
         }
     }
 
