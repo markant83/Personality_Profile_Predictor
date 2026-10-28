@@ -44,6 +44,21 @@ st.markdown(
         display: none !important;
     }
 
+    /* Sperrt die Transparenz beim Nachladen (Header bleibt 100% blickdicht) */
+    [data-stale="true"],
+    div:has(.sticky-header) {
+        opacity: 1 !important;
+        transition: none !important;
+        filter: none !important;
+    }
+
+    /* Zwingt den Eltern-Container des Headers dauerhaft in die oberste Ebene */
+    div[data-testid="stElementContainer"]:has(.sticky-header),
+    div.element-container:has(.sticky-header) {
+        z-index: 99999 !important;
+        position: relative !important;
+    }
+
     /* Fixierte Kopfzeile ganz oben */
     .sticky-header {
         position: fixed;
