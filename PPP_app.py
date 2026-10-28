@@ -200,12 +200,15 @@ st.markdown(
     <div class="sticky-header">
         <div class="sticky-header-content">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.4));">
-                    <!-- Fisch-Körper & Flosse -->
-                    <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z" />
-                    <path d="M18 12h.01" />
-                    <path d="M2 7l4.5 5L2 17" />
-                </svg>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <circle cx="19" cy="11" r="2" />
+                    <path d="M19 8v1" />
+                    <path d="M19 13v1" />
+                    <path d="M16 11h1" />
+                    <path d="M21 11h1" />
+            </svg>
                 <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
                     Personality Profile Predictor 
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
