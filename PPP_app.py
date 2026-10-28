@@ -202,7 +202,7 @@ st.markdown(
         <div class="sticky-header-content">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
                 <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
-                    <span style="font-size: 1.1em; vertical-align: middle; margin-right: 6px; filter: drop-shadow(0 0 8px rgba(65, 105, 225, 0.5));">🌀</span>
+                    <span style="font-size: 0.95em; vertical-align: middle; margin-right: 6px; filter: drop-shadow(0 0 8px rgba(65, 105, 225, 0.5));">🌀</span>
                     Personality Profile Predictor 
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
                 </h1>
