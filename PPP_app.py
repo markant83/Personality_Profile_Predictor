@@ -211,13 +211,15 @@ st.markdown(
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
                 </h1>
             </div>
+            <!-- Trennstrich innerhalb des fixierten Containers -->
+            <hr style="margin: 0.4rem 0 0.1rem 0 !important;">
         </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-st.divider()
+#st.divider()
 
 col1, col2 = st.columns(2)
 with col1:
