@@ -201,12 +201,22 @@ st.markdown(
     <div class="sticky-header">
         <div class="sticky-header-content">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-<svg width="34" height="34" viewBox="0 0 24 24" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
-    <!-- Gefüllte Silhouette des Kopfes -->
-    <path fill="#4169e1" d="M12 2C7.58 2 4 5.58 4 10c0 2.08.8 3.97 2.1 5.39.02.19.04.42.06.67.06.77.16 1.83.6 2.64.44.8 1.15 1.3 2.24 1.3h4c.55 0 1-.45 1-1v-2c1.72-.45 3-2.01 3-3.88 0-.41-.07-.8-.19-1.17l1.04-.37c.52-.18.82-.74.68-1.27l-.37-1.4c-.11-.42-.48-.71-.91-.71H16.8c-.89-2.92-3.6-5.06-6.8-5.06z" />
-    <!-- Weißes Zahnrad im Denkzentrum -->
-    <circle cx="11.5" cy="9.5" r="2.2" fill="#0e1117" />
-    <path fill="#0e1117" d="M11 6.2h1v1.3h-1zM11 11.5h1v1.3h-1zM8.2 9h1.3v1H8.2zM13.5 9h1.3v1h-1.3z" />
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
+    <!-- Profil nach rechts: Stirn, Nase, Lippe, Kinn, Hals -->
+    <path d="M12 4.5A7.5 7.5 0 0 1 15 9l.3 1.8 1.7.5a1.2 1.2 0 0 1 .8 1.1l-.2 1.2 1.2.6a1 1 0 0 1 .5 1.1l-.8 1.4a4 4 0 0 1-3.5 2.4H13v3" />
+    <!-- Hinterkopf / Nacken -->
+    <path d="M7 22v-6a7 7 0 0 1 1-3.6" />
+    
+    <!-- Großes Mindset-Zahnrad oben links/mittig -->
+    <circle cx="8" cy="8" r="2.2" />
+    <path d="M8 3.5v1.5" />
+    <path d="M8 11v1.5" />
+    <path d="M3.5 8H5" />
+    <path d="M11 8h1.5" />
+    <path d="M4.8 4.8l1.1 1.1" />
+    <path d="M10.1 10.1l1.1 1.1" />
+    <path d="M4.8 11.2l1.1-1.1" />
+    <path d="M10.1 5.9l1.1-1.1" />
 </svg>
                 <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
                     Personality Profile Predictor 
