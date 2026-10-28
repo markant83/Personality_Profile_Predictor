@@ -126,80 +126,58 @@ st.markdown(
     }
 
 /* Responsives Verhalten für Smartphones */
- /* ==========================================
-       2. SMARTPHONE-ANSICHT (Kompakter Header + 2 Zeilen Ergebnis)
-       ========================================== */
-    @media (max-width: 768px) {
-        /* Header extrem flach halten */
+ @media (max-width: 768px) {
+        /* 1. Header extrem flach halten */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            padding: 0.25rem 0 0 0 !important; /* Polsterung drastisch minimiert */
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
         .sticky-header-content h1 {
-            font-size: 1.45rem !important;
-            line-height: 1.15 !important;
+            font-size: 1.35rem !important;
+            line-height: 1.1 !important;
             margin: 0 !important;
+            padding: 0.2rem 0 0 0 !important;
+        }
+
+        /* Trennlinie: Abstand drastisch reduziert, sitzt direkt unter der Schrift */
+        .sticky-header-content hr,
+        .sticky-header hr {
+            margin: 2px 0 0 0 !important;
             padding: 0 !important;
+            border: 0 !important;
+            border-top: 1px solid rgba(65, 105, 225, 0.4) !important;
         }
 
-        .sticky-header-content h1 span:first-child {
-            font-size: 1.3rem !important;
-            margin-right: 6px !important;
-        }
-
-        .sticky-header-content h1 span:last-child {
-            display: block !important;
-            font-size: 0.72rem !important;
-            color: #a0a0a0 !important;
-            margin-top: 1px !important;
-        }
-
-        /* Abstand für den flachen Header: Gender ist sofort voll im Blick */
+        /* 2. Gender-Feld: Durch den flachen Header rückt der Inhalt hoch ins Sichtfeld */
         .block-container {
-            padding-top: 7.6rem !important;
-            padding-left: 0.8rem !important;
-            padding-right: 0.8rem !important;
+            padding-top: 5.6rem !important;
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
             max-width: 100vw !important;
         }
 
-        /* ERGEBNIS: Zwingend in 2 horizontale Zeilen stapeln */
-        /* Bricht den gesamten Spalten-Container um */
-        div[data-testid="stHorizontalBlock"],
-        div.row-widget.stHorizontal {
+        /* 3. Spalten aufbrechen: Wandelt 2 Spalten in 2 Zeilen um */
+        div[data-testid="stHorizontalBlock"] {
             display: flex !important;
-            flex-direction: column !important; /* Untereinander statt nebeneinander */
-            width: 100% !important;
-            gap: 8px !important;
+            flex-direction: column !important;
+            gap: 10px !important;
         }
 
-        /* Jede einzelne Spalte wird zur vollen horizontalen Zeile */
-        div[data-testid="column"],
-        div[data-testid="column"] > div {
+        div[data-testid="column"] {
             width: 100% !important;
-            max-width: 100% !important;
             min-width: 100% !important;
+            max-width: 100% !important;
             flex: 1 1 100% !important;
-            overflow: visible !important;
         }
 
-        /* Zeile 1: Ergebniswert (z.B. Moderate) voll ausschreiben */
-        [data-testid="stMetricValue"], 
-        [data-testid="stMetricLabel"] {
-            font-size: 1.25rem !important;
-            white-space: normal !important;
-            word-break: break-word !important;
-            overflow: visible !important;
-        }
-
-        /* Zeile 2: Erläuterungstexte in voller Breite lesbar */
-        .stMarkdown p, [data-testid="stAlert"] {
-            font-size: 0.88rem !important;
-            line-height: 1.35 !important;
+        /* 4. Texte im Ergebnisbereich nicht beschneiden */
+        div[data-testid="column"] * {
             white-space: normal !important;
             word-break: break-word !important;
             overflow: visible !important;
