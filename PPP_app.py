@@ -52,6 +52,12 @@ st.markdown(
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
+    /* Zentrierter Innenbereich für den Header (identisch zur Layoutbreite) */
+    .sticky-header-content {
+        max-width: 920px;
+        margin: 0 auto;
+    }
+    
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
         padding-top: 6.2rem !important;
@@ -205,8 +211,6 @@ st.markdown(
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
                 </h1>
             </div>
-            <!-- Subtile Trennlinie als unterer Abschluss der fixierten Leiste -->
-            <hr style="margin: 0.5rem 0 0 0 !important;">
         </div>
     </div>
     """,
