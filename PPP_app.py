@@ -126,7 +126,6 @@ st.markdown(
     }
 
 /* Responsives Verhalten für Smartphones */
-    /* Verhindert globales seitliches Wackeln/Fliegen */
     html, body, 
     [data-testid="stAppViewContainer"], 
     [data-testid="stMain"], 
@@ -137,64 +136,69 @@ st.markdown(
     }
 
     @media (max-width: 768px) {
-        /* 1. Header fest verankern & Schriftgrößen anpassen */
+        /* 1. Header: Titel wieder prominent und größer */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            padding: 0.4rem 0 0.1rem 0 !important;
+            padding: 0.5rem 0 0.2rem 0 !important;
         }
 
         .sticky-header h1 {
-            font-size: 1.15rem !important;
-            line-height: 1.2 !important;
+            font-size: 1.65rem !important; /* Deutlich größer als die Fragen */
+            line-height: 1.25 !important;
         }
 
         .sticky-header h1 span {
-            font-size: 0.7rem !important;
+            display: block !important;
+            font-size: 0.85rem !important;
+            margin-top: 3px !important;
         }
 
-        /* 2. Ausreichend Abstand nach oben: Geschlecht ist sofort voll sichtbar */
+        /* 2. Abstand oben: Passt sich dem größeren Header an */
         .block-container {
-            padding-top: 8.5rem !important;
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
+            padding-top: 9.8rem !important;
+            padding-left: 0.9rem !important;
+            padding-right: 0.9rem !important;
             max-width: 100vw !important;
             overflow-x: hidden !important;
             box-sizing: border-box !important;
         }
 
-        /* 3. Likert-Skalen einbremsen & Zeilenumbruch erzwingen */
-        div[role="radiogroup"] {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 6px !important;
+        /* 3. Likert-Skala & Erklärung: Voller Umbruch statt Abschneiden */
+        .stMarkdown, 
+        .stMarkdown p, 
+        .stMarkdown div,
+        [data-testid="stWidgetLabel"],
+        .stSlider {
+            white-space: normal !important;
+            overflow-wrap: anywhere !important;
+            word-break: normal !important;
+            hyphens: auto !important;
             max-width: 100% !important;
         }
 
-        div[role="radiogroup"] label {
-            white-space: normal !important;
-            word-break: break-word !important;
-            font-size: 0.8rem !important;
-            max-width: 100% !important;
+        /* Falls die Likert-Erklärung in einer Flexbox/Tabelle liegt */
+        .stMarkdown ul, .stMarkdown ol {
+            padding-left: 1.2rem !important;
         }
 
-        /* Slider & allgemeine Skalentexte umbrechen */
-        .stSlider, .stRadio, [data-testid="stWidgetLabel"], .stMarkdown {
-            word-break: break-word !important;
-            overflow-wrap: break-word !important;
-            white-space: normal !important;
-            max-width: 100% !important;
+        /* 4. Ergebnisfeld: Nicht mehr seitlich quetschen, sondern untereinander */
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+            margin-bottom: 0.6rem !important;
         }
 
-        [data-testid="stSliderTickBar"], 
-        [data-testid="stSliderTickBarMin"], 
-        [data-testid="stSliderTickBarMax"] {
-            white-space: normal !important;
-            font-size: 0.75rem !important;
-            max-width: 100% !important;
+        /* Boxen & Metrik-Container im Ergebnisbereich vollflächig darstellen */
+        [data-testid="stMetric"], 
+        [data-testid="stNotification"],
+        div[data-testid="stVerticalBlock"] > div:has(div[data-testid="stMetric"]) {
+            width: 100% !important;
+            min-width: 100% !important;
         }
     }
 
