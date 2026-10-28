@@ -125,85 +125,109 @@ st.markdown(
     margin: 1.5rem 0 !important;
     }
 
-@media (max-width: 768px) {
-        /* 1. Header: Groß, dominant, Spirale links daneben */
+/* Responsives Verhalten für Smartphones */
+   /* 1. Global: Seitliches Fliegen/Wackeln strikt sperren */
+    html, body, 
+    [data-testid="stAppViewContainer"], 
+    [data-testid="stMain"], 
+    .main, 
+    .block-container {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+    }
+
+    @media (max-width: 768px) {
+        /* 2. Header: Größe auf 1.55rem angepasst (bricht nicht mehr ab) */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            padding: 0.6rem 0 0.2rem 0 !important;
+            padding: 0.4rem 0 0.15rem 0 !important;
         }
 
         .sticky-header-content h1 {
-            font-size: 2.05rem !important; /* Deutlich größer als alle Body-Texte */
-            line-height: 1.15 !important;
+            font-size: 1.55rem !important;
+            line-height: 1.2 !important;
             font-weight: 700 !important;
-            display: flex !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            gap: 8px !important;
+            word-break: normal !important;
+            white-space: normal !important;
         }
 
         .sticky-header-content h1 span:first-child {
-            font-size: 1.9rem !important; /* Spiralsymbol links */
-            flex-shrink: 0 !important;
-            margin-right: 4px !important;
+            font-size: 1.4rem !important; /* Spirale links */
+            margin-right: 6px !important;
+            vertical-align: -1px !important;
         }
 
         .sticky-header-content h1 span:last-child {
             display: block !important;
-            width: 100% !important;
-            font-size: 0.85rem !important;
+            font-size: 0.75rem !important;
             font-weight: normal !important;
+            color: #a0a0a0 !important;
             margin-top: 2px !important;
         }
 
-        /* 2. Ausreichend Abstand nach oben für den großen Header */
+        /* 3. Abstand oben für das erste Feld (Geschlecht) */
         .block-container {
-            padding-top: 11.2rem !important;
-            padding-left: 0.9rem !important;
-            padding-right: 0.9rem !important;
-            max-width: 100vw !important;
-            box-sizing: border-box !important;
+            padding-top: 8.8rem !important;
+            padding-left: 0.8rem !important;
+            padding-right: 0.8rem !important;
         }
 
-        /* 3. Body-Texte & Fragen dezent verkleinern */
+        /* 4. Body-Schriften dezent verkleinern */
         [data-testid="stWidgetLabel"] label, 
         [data-testid="stWidgetLabel"] p,
         .stMarkdown p {
-            font-size: 0.95rem !important;
-            line-height: 1.35 !important;
-        }
-
-        /* Likert-Skalen-Texte */
-        div[role="radiogroup"] label p,
-        [data-testid="stSliderTickBar"] {
-            font-size: 0.85rem !important;
-        }
-
-        /* 4. Ergebnisfeld: Vollständige Anzeige ohne Abschneiden */
-        [data-testid="column"] {
-            min-width: 0 !important;
-            overflow: visible !important;
-        }
-
-        [data-testid="stMetric"], 
-        [data-testid="stAlert"], 
-        [data-testid="stNotification"],
-        div[data-testid="stVerticalBlock"] {
-            overflow: visible !important;
-            word-break: normal !important;
-            overflow-wrap: break-word !important;
-            white-space: normal !important;
-        }
-
-        [data-testid="stMetricLabel"], 
-        [data-testid="stMetricValue"] {
+            font-size: 0.88rem !important;
+            line-height: 1.3 !important;
             white-space: normal !important;
             word-break: break-word !important;
-            font-size: 1.1rem !important;
+        }
+
+        /* Likert-Skalen Optionen */
+        div[role="radiogroup"] label p,
+        [data-testid="stSliderTickBar"] {
+            font-size: 0.78rem !important;
+        }
+
+        /* 5. Ergebnisfeld: Vertikal anordnen (Wert oben, Erklärung darunter) */
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        [data-testid="stMetric"] {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+
+        [data-testid="stMetricLabel"] {
+            font-size: 0.85rem !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            width: 100% !important;
+        }
+
+        [data-testid="stMetricValue"] {
+            font-size: 1.2rem !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            margin: 2px 0 !important;
+        }
+
+        /* Textblöcke und Alert-Boxen im Ergebnisbereich */
+        [data-testid="stAlert"], 
+        [data-testid="stNotification"] {
+            font-size: 0.85rem !important;
+            padding: 0.6rem !important;
+            white-space: normal !important;
+            word-break: break-word !important;
         }
     }
 
