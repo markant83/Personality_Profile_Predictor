@@ -49,7 +49,7 @@ st.markdown(
         background-color: #0e1117; /* Streamlit Dark-Mode Hintergrundfarbe */
         z-index: 999;
         padding: 0.8rem 1rem 0 1rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: none !important; /* 0 4px 10px rgba(0, 0, 0, 0.3);*/
     }
 
     /* Zentrierter Innenbereich für den Header (identisch zur Layoutbreite) */
@@ -60,7 +60,7 @@ st.markdown(
     
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
-        padding-top: 6.2rem !important;
+        padding-top: 3.5rem !important;
         padding-bottom: 2rem !important;
         max-width: 920px !important;
     }
