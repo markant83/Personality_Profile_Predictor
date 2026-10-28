@@ -60,7 +60,7 @@ st.markdown(
     
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
-        padding-top: 8.2rem !important;
+        padding-top: 7.5rem !important;
         padding-bottom: 2rem !important;
         max-width: 920px !important;
     }
