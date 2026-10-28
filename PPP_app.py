@@ -202,14 +202,18 @@ st.markdown(
         <div class="sticky-header-content">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
                 <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
-                    <!-- Kopfprofil -->
-                    <path d="M4 21v-1a5 5 0 0 1 5-5h1.5a6 6 0 0 1 6-6V8a4 4 0 0 0-4-4H9.5a5.5 5.5 0 0 0-5.5 5.5V11" />
-                    <!-- Mindset-Zahnrad im Kopf -->
-                    <circle cx="15" cy="8" r="2.5" />
-                    <path d="M15 4.5v1" />
-                    <path d="M15 10.5v1" />
-                    <path d="M12 8h1" />
-                    <path d="M17 8h1" />
+                    <!-- Klare Profil-Silhouette: Hals, Kinn, Lippen, Nase, Stirn -->
+                    <path d="M6 21v-2a4 4 0 0 1 4-4h1l1.5 2 2.5-.5.5-2.5 1-.5a1 1 0 0 0 .5-1.5l-.5-1 1.5-.5a1 1 0 0 0 .5-1.2l-.8-2.3a6 6 0 0 0-4.2-4.5H12A7 7 0 0 0 5 11v3a7 7 0 0 0 1 3.5" />
+                    <!-- Zahnrad im Kopfzentrum -->
+                    <circle cx="12" cy="9" r="2" />
+                    <path d="M12 5.5v1.5" />
+                    <path d="M12 11v1.5" />
+                    <path d="M8.5 9h1.5" />
+                    <path d="M14 9h1.5" />
+                    <path d="M9.5 6.5l1.1 1.1" />
+                    <path d="M13.4 10.4l1.1 1.1" />
+                    <path d="M9.5 11.5l1.1-1.1" />
+                    <path d="M13.4 7.6l1.1-1.1" />
                 </svg>
                 <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
                     Personality Profile Predictor 
