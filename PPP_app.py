@@ -125,80 +125,85 @@ st.markdown(
     margin: 1.5rem 0 !important;
     }
 
-/* Responsives Verhalten für Smartphones */
-    html, body, 
-    [data-testid="stAppViewContainer"], 
-    [data-testid="stMain"], 
-    .main {
-        overflow-x: hidden !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    @media (max-width: 768px) {
-        /* 1. Header: Titel wieder prominent und größer */
+@media (max-width: 768px) {
+        /* 1. Header: Groß, dominant, Spirale links daneben */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            padding: 0.5rem 0 0.2rem 0 !important;
+            padding: 0.6rem 0 0.2rem 0 !important;
         }
 
-        .sticky-header h1 {
-            font-size: 1.65rem !important; /* Deutlich größer als die Fragen */
-            line-height: 1.25 !important;
+        .sticky-header-content h1 {
+            font-size: 2.05rem !important; /* Deutlich größer als alle Body-Texte */
+            line-height: 1.15 !important;
+            font-weight: 700 !important;
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
         }
 
-        .sticky-header h1 span {
+        .sticky-header-content h1 span:first-child {
+            font-size: 1.9rem !important; /* Spiralsymbol links */
+            flex-shrink: 0 !important;
+            margin-right: 4px !important;
+        }
+
+        .sticky-header-content h1 span:last-child {
             display: block !important;
+            width: 100% !important;
             font-size: 0.85rem !important;
-            margin-top: 3px !important;
+            font-weight: normal !important;
+            margin-top: 2px !important;
         }
 
-        /* 2. Abstand oben: Passt sich dem größeren Header an */
+        /* 2. Ausreichend Abstand nach oben für den großen Header */
         .block-container {
-            padding-top: 9.8rem !important;
+            padding-top: 11.2rem !important;
             padding-left: 0.9rem !important;
             padding-right: 0.9rem !important;
             max-width: 100vw !important;
-            overflow-x: hidden !important;
             box-sizing: border-box !important;
         }
 
-        /* 3. Likert-Skala & Erklärung: Voller Umbruch statt Abschneiden */
-        .stMarkdown, 
-        .stMarkdown p, 
-        .stMarkdown div,
-        [data-testid="stWidgetLabel"],
-        .stSlider {
-            white-space: normal !important;
-            overflow-wrap: anywhere !important;
-            word-break: normal !important;
-            hyphens: auto !important;
-            max-width: 100% !important;
+        /* 3. Body-Texte & Fragen dezent verkleinern */
+        [data-testid="stWidgetLabel"] label, 
+        [data-testid="stWidgetLabel"] p,
+        .stMarkdown p {
+            font-size: 0.95rem !important;
+            line-height: 1.35 !important;
         }
 
-        /* Falls die Likert-Erklärung in einer Flexbox/Tabelle liegt */
-        .stMarkdown ul, .stMarkdown ol {
-            padding-left: 1.2rem !important;
+        /* Likert-Skalen-Texte */
+        div[role="radiogroup"] label p,
+        [data-testid="stSliderTickBar"] {
+            font-size: 0.85rem !important;
         }
 
-        /* 4. Ergebnisfeld: Nicht mehr seitlich quetschen, sondern untereinander */
+        /* 4. Ergebnisfeld: Vollständige Anzeige ohne Abschneiden */
         [data-testid="column"] {
-            width: 100% !important;
-            flex: 1 1 100% !important;
-            min-width: 100% !important;
-            margin-bottom: 0.6rem !important;
+            min-width: 0 !important;
+            overflow: visible !important;
         }
 
-        /* Boxen & Metrik-Container im Ergebnisbereich vollflächig darstellen */
         [data-testid="stMetric"], 
+        [data-testid="stAlert"], 
         [data-testid="stNotification"],
-        div[data-testid="stVerticalBlock"] > div:has(div[data-testid="stMetric"]) {
-            width: 100% !important;
-            min-width: 100% !important;
+        div[data-testid="stVerticalBlock"] {
+            overflow: visible !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        [data-testid="stMetricLabel"], 
+        [data-testid="stMetricValue"] {
+            white-space: normal !important;
+            word-break: break-word !important;
+            font-size: 1.1rem !important;
         }
     }
 
