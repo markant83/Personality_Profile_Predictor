@@ -126,90 +126,83 @@ st.markdown(
     }
 
 /* Responsives Verhalten für Smartphones */
-  /* ==========================================
-       2. REINE SMARTPHONE-ANSICHT
+ /* ==========================================
+       2. SMARTPHONE-ANSICHT (Kompakter Header + 2 Zeilen Ergebnis)
        ========================================== */
     @media (max-width: 768px) {
-        /* Seitliches Fliegen stoppen */
-        html, body, 
-        [data-testid="stAppViewContainer"], 
-        [data-testid="stMain"], 
-        .main {
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
-        }
-
-        /* Header mobil */
+        /* Header extrem flach halten */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            padding: 0.4rem 0 0.15rem 0 !important;
+            padding: 0.25rem 0 0 0 !important; /* Polsterung drastisch minimiert */
         }
 
         .sticky-header-content h1 {
-            font-size: 1.5rem !important;
-            line-height: 1.2 !important;
-            white-space: normal !important;
+            font-size: 1.45rem !important;
+            line-height: 1.15 !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .sticky-header-content h1 span:first-child {
-            font-size: 1.35rem !important;
+            font-size: 1.3rem !important;
             margin-right: 6px !important;
         }
 
         .sticky-header-content h1 span:last-child {
             display: block !important;
-            font-size: 0.75rem !important;
+            font-size: 0.72rem !important;
             color: #a0a0a0 !important;
-            margin-top: 2px !important;
+            margin-top: 1px !important;
         }
 
-        /* Gender/Geschlecht wieder voll sichtbar machen */
+        /* Abstand für den flachen Header: Gender ist sofort voll im Blick */
         .block-container {
-            padding-top: 9.6rem !important;
+            padding-top: 7.6rem !important;
             padding-left: 0.8rem !important;
             padding-right: 0.8rem !important;
             max-width: 100vw !important;
         }
 
-        /* Schriften mobil dezent anpassen */
-        [data-testid="stWidgetLabel"] label, 
-        [data-testid="stWidgetLabel"] p,
-        .stMarkdown p {
-            font-size: 0.88rem !important;
-            line-height: 1.3 !important;
-            white-space: normal !important;
-            word-break: break-word !important;
-        }
-
-        /* Ergebnisspalten zwingend untereinander brechen (kein 2-Spalten-Quetschen mehr) */
-        [data-testid="stHorizontalBlock"],
-        div[data-testid="stHorizontalBlock"] {
-            flex-direction: column !important;
-            flex-wrap: wrap !important;
-        }
-
-        [data-testid="column"],
-        div[data-testid="column"] {
+        /* ERGEBNIS: Zwingend in 2 horizontale Zeilen stapeln */
+        /* Bricht den gesamten Spalten-Container um */
+        div[data-testid="stHorizontalBlock"],
+        div.row-widget.stHorizontal {
+            display: flex !important;
+            flex-direction: column !important; /* Untereinander statt nebeneinander */
             width: 100% !important;
+            gap: 8px !important;
+        }
+
+        /* Jede einzelne Spalte wird zur vollen horizontalen Zeile */
+        div[data-testid="column"],
+        div[data-testid="column"] > div {
+            width: 100% !important;
+            max-width: 100% !important;
             min-width: 100% !important;
             flex: 1 1 100% !important;
-            margin-bottom: 0.6rem !important;
+            overflow: visible !important;
         }
 
-        /* Alle Texte im Ergebnisbereich vollständig anzeigen */
-        [data-testid="stMetric"], 
-        [data-testid="stMetricLabel"], 
-        [data-testid="stMetricValue"],
-        [data-testid="stAlert"], 
-        [data-testid="stNotification"] {
+        /* Zeile 1: Ergebniswert (z.B. Moderate) voll ausschreiben */
+        [data-testid="stMetricValue"], 
+        [data-testid="stMetricLabel"] {
+            font-size: 1.25rem !important;
             white-space: normal !important;
             word-break: break-word !important;
             overflow: visible !important;
-            width: 100% !important;
+        }
+
+        /* Zeile 2: Erläuterungstexte in voller Breite lesbar */
+        .stMarkdown p, [data-testid="stAlert"] {
+            font-size: 0.88rem !important;
+            line-height: 1.35 !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow: visible !important;
         }
     }
 
