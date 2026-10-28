@@ -201,12 +201,8 @@ st.markdown(
     <div class="sticky-header">
         <div class="sticky-header-content">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.45));">
-    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 0-5-5" />
-    <path d="M8.5 8.5a5 5 0 0 0 7 7" />
-    <circle cx="12" cy="12" r="1.5" fill="#4169e1" />
-</svg>
                 <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
+                    <span style="font-size: 1.1em; vertical-align: middle; margin-right: 6px; filter: drop-shadow(0 0 8px rgba(65, 105, 225, 0.5));">🌀</span>
                     Personality Profile Predictor 
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
                 </h1>
