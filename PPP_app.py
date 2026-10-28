@@ -39,9 +39,28 @@ st.markdown(
         margin-top: 0.5rem !important;
     }
 
+/* 1. Fixierte Kopfzeile ganz oben */
+    .sticky-header {
+        position: fixed;
+        top: 2.875rem; /* Sitzt exakt unter Streamlits Menü-Leiste */
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #0e1117; /* Streamlit Dark-Mode Hintergrundfarbe */
+        z-index: 999;
+        padding: 0.8rem 1rem 0 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Zentrierter Innenbereich für den Header (identisch zur Layoutbreite) */
+    .sticky-header-content {
+        max-width: 920px;
+        margin: 0 auto;
+    }
+    
     /* 1. Oberer Leerraum & Layoutbreite */
     .block-container {
-        padding-top: 3.5rem !important;
+        padding-top: 6.2rem !important;
         padding-bottom: 2rem !important;
         max-width: 920px !important;
     }
@@ -178,17 +197,23 @@ PROFILES = {
 
 st.markdown(
     """
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
-        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.4));">
-            <!-- Fisch-Körper & Flosse -->
-            <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z" />
-            <path d="M18 12h.01" />
-            <path d="M2 7l4.5 5L2 17" />
-        </svg>
-        <h1 style="font-size: 2.2rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
-            Personality Profile Predictor 
-            <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
-        </h1>
+    <div class="sticky-header">
+        <div class="sticky-header-content">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.4));">
+                    <!-- Fisch-Körper & Flosse -->
+                    <path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z" />
+                    <path d="M18 12h.01" />
+                    <path d="M2 7l4.5 5L2 17" />
+                </svg>
+                <h1 style="font-size: 2.0rem; margin: 0; padding: 0; line-height: 1.2; color: #ffffff;">
+                    Personality Profile Predictor 
+                    <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
+                </h1>
+            </div>
+            <!-- Subtile Trennlinie als unterer Abschluss der fixierten Leiste -->
+            <hr style="margin: 0.5rem 0 0 0 !important;">
+        </div>
     </div>
     """,
     unsafe_allow_html=True,
