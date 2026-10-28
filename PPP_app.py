@@ -29,14 +29,19 @@ st.markdown(
         border-color: #4169e1 !important;
         box-shadow: 0 0 8px rgba(65, 105, 225, 0.7) !important;
     }
-    /* Zahl über dem Slider */
     div[data-testid="stSlider"] div[data-testid="stThumbValue"] {
         color: #4169e1 !important;
         font-weight: 700 !important;
     }
-
     div[data-testid="stSlider"] {
         margin-top: 0.5rem !important;
+    }
+
+    /* ========================================================
+       NEU: Versteckt Streamlits nervige Lade-Schatten (Ghost-Balken oben)
+       ======================================================== */
+    [data-testid="stSkeleton"] {
+        display: none !important;
     }
 
     /* Fixierte Kopfzeile ganz oben */
@@ -58,7 +63,6 @@ st.markdown(
         padding: 0 1rem; 
     }
     
-    /* Oberer Leerraum & Layoutbreite (Desktop) */
     .block-container {
         padding-top: 7.5rem !important;
         padding-bottom: 2rem !important;
@@ -118,9 +122,7 @@ st.markdown(
         margin: 1.5rem 0 !important;
     }
 
-    /* ========================================================
-       NEU: CSS-Klassen für das Ergebnis-Feld (Flexibel!)
-       ======================================================== */
+    /* CSS-Klassen für das Ergebnis-Feld */
     .result-box {
         display: flex;
         align-items: stretch;
@@ -128,7 +130,7 @@ st.markdown(
         border: 1px solid rgba(65, 105, 225, 0.5);
         border-left: 6px solid #4169e1;
         border-radius: 8px;
-        min-height: 85px; /* min-height statt height, damit Text wachsen kann */
+        min-height: 85px; 
     }
     .result-title {
         flex: 0 0 25%;
@@ -156,40 +158,51 @@ st.markdown(
     }
 
     /* ========================================================
-       GLOBAL: Verhindert seitliches Wackeln endgültig
+       GLOBAL: Verhindert seitliches Wackeln & Swipen endgültig
        ======================================================== */
     html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {
         overflow-x: hidden !important;
+        overscroll-behavior-x: none !important; /* Verhindert "Seite zurück"-Wischen */
+        touch-action: pan-y !important; /* Erlaubt nur noch Scrollen nach oben/unten */
         width: 100% !important;
     }
 
     /* ========================================================
-       RESPONSIVE: Smartphone (Trennt Ergebnis in 2 Zeilen)
+       RESPONSIVE: Smartphone
        ======================================================== */
     @media (max-width: 768px) {
-        /* Header anpassen: Überschrift darf umbrechen */
         .sticky-header {
             padding: 0.5rem 0.5rem 0 0.5rem !important;
         }
+        
+        /* Hauptüberschrift deutlich größer machen */
         .sticky-header-content h1 {
-            font-size: 1.35rem !important;
-            line-height: 1.25 !important;
+            font-size: 1.7rem !important; 
+            line-height: 1.15 !important;
             margin: 0 !important;
             padding-bottom: 0.3rem !important;
-            white-space: normal !important; /* Lässt den Text umbrechen */
+            white-space: normal !important; 
         }
+        .sticky-header-content h1 span:first-child {
+            font-size: 1.5rem !important; 
+        }
+        
         .sticky-header hr {
             margin: 0 !important;
         }
 
-        /* Abstand zu Gender: Genau richtig für Smartphone */
         .block-container {
-            padding-top: 7.2rem !important;
+            padding-top: 7.6rem !important;
             padding-left: 1rem !important;
             padding-right: 1rem !important;
         }
 
-        /* Ergebnis-Box: Spalten aufheben, untereinander stapeln! */
+        /* Überschreibt die harte 1.35rem Schriftgröße der Fragen aus dem Python-Code */
+        .stMarkdown div[style*="1.35rem"] {
+            font-size: 1.05rem !important;
+            line-height: 1.3 !important;
+        }
+
         .result-box {
             flex-direction: column !important;
             height: auto !important;
@@ -209,7 +222,6 @@ st.markdown(
             padding: 6px 16px 12px 16px !important;
         }
         
-        /* Buttonhöhe am Handy freigeben, damit nichts gequetscht wird */
         div.stButton > button {
             height: auto !important;
             min-height: 60px !important;
