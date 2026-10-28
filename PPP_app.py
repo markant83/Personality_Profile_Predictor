@@ -126,29 +126,37 @@ st.markdown(
     }
 
     /* Responsives Verhalten für Smartphones */
+    /* Verhindert seitliches Wackeln/Fliegen */
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-x: hidden !important;
+    }
+
     @media (max-width: 768px) {
-        /* Titel kompakter machen, damit nichts umbricht */
+        /* Header fest verankern */
+        .sticky-header {
+            position: fixed !important;
+            top: 2.875rem !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            padding: 0.4rem 0 0.1rem 0 !important;
+        }
+
+        /* Schriftgröße verkleinern */
         .sticky-header h1 {
-            font-size: 1.25rem !important;
+            font-size: 1.15rem !important;
             line-height: 1.2 !important;
         }
-        
-        /* Deutschen Untertitel auf dem Handy kleiner anzeigen oder ausblenden */
+
         .sticky-header h1 span {
-            display: block !important;
-            font-size: 0.75rem !important;
-            margin-top: 2px !important;
+            font-size: 0.7rem !important;
         }
 
-        /* Mehr Platz nach oben, damit das oberste Feld (Geschlecht) nicht verdeckt wird */
+        /* Ausreichend Abstand nach oben: Geschlecht ist sofort voll sichtbar */
         .block-container {
-            padding-top: 6.8rem !important;
-            padding-left: 0.8rem !important;
-            padding-right: 0.8rem !important;
-        }
-
-        .sticky-header-content {
-            padding: 0 0.8rem !important;
+            padding-top: 8.5rem !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
         }
     }
 
