@@ -7,7 +7,7 @@ import streamlit as st
 # -------------------------------
 st.set_page_config(
     page_title="Personality Profile Predictor",
-    page_icon="🧠",
+    page_icon="🌀",
     layout="centered",
 )
 
@@ -42,31 +42,30 @@ st.markdown(
     /* Fixierte Kopfzeile ganz oben */
     .sticky-header {
         position: fixed;
-        top: 2.875rem; /* Sitzt exakt unter Streamlits Menü-Leiste */
+        top: 2.875rem; 
         left: 0;
         right: 0;
         width: 100%;
-        background-color: #0e1117; /* Streamlit Dark-Mode Hintergrundfarbe */
+        background-color: #0e1117; 
         z-index: 999;
-        padding: 0.6rem 0 0.1rem 0; /* Links und rechts auf 0 für perfekte Bündigkeit */
-        box-shadow: none !important; /* 0 4px 10px rgba(0, 0, 0, 0.3);*/
+        padding: 0.6rem 0 0.1rem 0; 
+        box-shadow: none !important;
     }
 
-    /* Zentrierter Innenbereich für den Header (identisch zur Layoutbreite) */
     .sticky-header-content {
         max-width: 920px;
         margin: 0 auto;
-        padding: 0 1rem; /* Gleicher Abstand wie Streamlits Block-Container */
+        padding: 0 1rem; 
     }
     
-    /* Oberer Leerraum & Layoutbreite */
+    /* Oberer Leerraum & Layoutbreite (Desktop) */
     .block-container {
         padding-top: 7.5rem !important;
         padding-bottom: 2rem !important;
         max-width: 920px !important;
     }
 
-    /* Plastischer 3D-Button (Höhe exakt an Ergebnisbox angepasst) */
+    /* Plastischer 3D-Button */
     div.stButton > button {
         background: linear-gradient(180deg, #3a3f47 0%, #2b2f36 100%) !important;
         color: #ffffff !important;
@@ -82,7 +81,6 @@ st.markdown(
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
         transition: all 0.1s ease-in-out !important;
     }
-    /* 1. Zeile: Englisch (1.05rem, weiß, fett) */
     div.stButton > button div,
     div.stButton > button p {
         font-size: 1.05rem !important;
@@ -92,7 +90,6 @@ st.markdown(
         line-height: 1.25 !important;
         white-space: pre-line !important;
     }
-    /* Zeile: Deutsch (0.88rem, hellgrau) */
     div.stButton > button p:last-child,
     div.stButton > button div:last-child {
         font-size: 0.88rem !important;
@@ -102,9 +99,7 @@ st.markdown(
     div.stButton > button:hover {
         background: linear-gradient(180deg, #444a54 0%, #323740 100%) !important;
         border-color: #2b2f36 !important;
-    }
-    div.stButton > button:hover {
-    box-shadow: 0 0 16px rgba(65, 105, 225, 0.4) !important;
+        box-shadow: 0 0 16px rgba(65, 105, 225, 0.4) !important;
     }
     div.stButton > button:active {
         border-bottom-width: 1px !important;
@@ -112,79 +107,115 @@ st.markdown(
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* Dropdown-Schriftgröße */
     div[data-baseweb="select"] {
         font-size: 1.1rem !important;
     }
 
-    /* Subtile Trennlinie wie eine Meeresoberfläche */
     hr {
-    border: none !important;
-    height: 1px !important;
-    background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.4), transparent) !important;
-    margin: 1.5rem 0 !important;
+        border: none !important;
+        height: 1px !important;
+        background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.4), transparent) !important;
+        margin: 1.5rem 0 !important;
     }
 
-/* Responsives Verhalten für Smartphones */
- @media (max-width: 768px) {
-        /* 1. Header extrem flach halten */
-        .sticky-header {
-            position: fixed !important;
-            top: 2.875rem !important;
-            left: 0 !important;
-            right: 0 !important;
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
+    /* ========================================================
+       NEU: CSS-Klassen für das Ergebnis-Feld (Flexibel!)
+       ======================================================== */
+    .result-box {
+        display: flex;
+        align-items: stretch;
+        background-color: rgba(65, 105, 225, 0.20);
+        border: 1px solid rgba(65, 105, 225, 0.5);
+        border-left: 6px solid #4169e1;
+        border-radius: 8px;
+        min-height: 85px; /* min-height statt height, damit Text wachsen kann */
+    }
+    .result-title {
+        flex: 0 0 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 10px;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+    }
+    .result-divider {
+        width: 2px;
+        background-color: #111111;
+        opacity: 0.8;
+    }
+    .result-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 8px 16px;
+        gap: 3px;
+    }
 
+    /* ========================================================
+       GLOBAL: Verhindert seitliches Wackeln endgültig
+       ======================================================== */
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* ========================================================
+       RESPONSIVE: Smartphone (Trennt Ergebnis in 2 Zeilen)
+       ======================================================== */
+    @media (max-width: 768px) {
+        /* Header anpassen: Überschrift darf umbrechen */
+        .sticky-header {
+            padding: 0.5rem 0.5rem 0 0.5rem !important;
+        }
         .sticky-header-content h1 {
             font-size: 1.35rem !important;
-            line-height: 1.1 !important;
+            line-height: 1.25 !important;
             margin: 0 !important;
-            padding: 0.2rem 0 0 0 !important;
+            padding-bottom: 0.3rem !important;
+            white-space: normal !important; /* Lässt den Text umbrechen */
         }
-
-        /* Trennlinie: Abstand drastisch reduziert, sitzt direkt unter der Schrift */
-        .sticky-header-content hr,
         .sticky-header hr {
-            margin: 2px 0 0 0 !important;
-            padding: 0 !important;
-            border: 0 !important;
-            border-top: 1px solid rgba(65, 105, 225, 0.4) !important;
+            margin: 0 !important;
         }
 
-        /* 2. Gender-Feld: Durch den flachen Header rückt der Inhalt hoch ins Sichtfeld */
+        /* Abstand zu Gender: Genau richtig für Smartphone */
         .block-container {
-            padding-top: 5.6rem !important;
-            padding-left: 0.75rem !important;
-            padding-right: 0.75rem !important;
-            max-width: 100vw !important;
+            padding-top: 7.2rem !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
         }
 
-        /* 3. Spalten aufbrechen: Wandelt 2 Spalten in 2 Zeilen um */
-        div[data-testid="stHorizontalBlock"] {
-            display: flex !important;
+        /* Ergebnis-Box: Spalten aufheben, untereinander stapeln! */
+        .result-box {
             flex-direction: column !important;
-            gap: 10px !important;
+            height: auto !important;
         }
-
-        div[data-testid="column"] {
+        .result-title {
+            flex: auto !important;
+            justify-content: flex-start !important;
+            text-align: left !important;
+            padding: 12px 16px 6px 16px !important;
+        }
+        .result-divider {
             width: 100% !important;
-            min-width: 100% !important;
-            max-width: 100% !important;
-            flex: 1 1 100% !important;
+            height: 1px !important;
+            margin: 0 !important;
         }
-
-        /* 4. Texte im Ergebnisbereich nicht beschneiden */
-        div[data-testid="column"] * {
-            white-space: normal !important;
-            word-break: break-word !important;
-            overflow: visible !important;
+        .result-text {
+            padding: 6px 16px 12px 16px !important;
+        }
+        
+        /* Buttonhöhe am Handy freigeben, damit nichts gequetscht wird */
+        div.stButton > button {
+            height: auto !important;
+            min-height: 60px !important;
+            padding: 12px !important;
         }
     }
-
-
     </style>
     """,
     unsafe_allow_html=True,
@@ -250,12 +281,6 @@ PROFILES = {
 # -------------------------------
 # Benutzeroberfläche
 # -------------------------------
-# st.markdown(
-#     '<h1 style="font-size: 2.2rem; margin-bottom: 4px;">🌀 Personality Profile Predictor '
-#     '<span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal;">(Persönlichkeitsprofil-Vorhersage)</span></h1>',
-#     unsafe_allow_html=True,
-# )
-
 st.markdown(
     """
     <div class="sticky-header">
@@ -267,15 +292,12 @@ st.markdown(
                     <span style="font-size: 0.6em; color: #a0a0a0; font-weight: normal; vertical-align: middle;">(Persönlichkeitsprofil-Vorhersage)</span>
                 </h1>
             </div>
-            <!-- Trennstrich innerhalb des fixierten Containers -->
             <hr style="margin: 0.4rem 0 0.1rem 0 !important;">
         </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
-
-#st.divider()
 
 col1, col2 = st.columns(2)
 with col1:
@@ -304,8 +326,10 @@ input_dict = {"age": age, "gender": gender, "hand": hand}
 
 st.write("")
 bilingual_label("Likert Scales (1–5)", "Likert-Skalen 1–5")
+
+# FIX: white-space: nowrap entfernt. Text darf jetzt sauber umbrechen!
 st.markdown(
-    '<p style="font-style: italic; margin-top: 2px; margin-bottom: 25px; color: #999; font-size: 1rem; white-space: nowrap;">'
+    '<p style="font-style: italic; margin-top: 2px; margin-bottom: 25px; color: #999; font-size: 0.95rem; line-height: 1.5;">'
     "1 = Disagree <span style='font-size: 0.88em; color: #888;'>(Trifft nicht zu)</span> &nbsp;|&nbsp; "
     "2 = Slightly Disagree <span style='font-size: 0.88em; color: #888;'>(Trifft eher nicht zu)</span> &nbsp;|&nbsp; "
     "3 = Neutral <span style='font-size: 0.88em; color: #888;'>(Neutral)</span> &nbsp;|&nbsp; "
@@ -331,7 +355,7 @@ for col, (en_text, de_text) in QUESTIONS.items():
 st.divider()
 
 # -------------------------------
-# Inferenz & 2-Spalten-Layout (1 : 4)
+# Inferenz & Ergebnis (Responsive)
 # -------------------------------
 col_btn, col_res = st.columns([1, 4], gap="medium")
 
@@ -348,30 +372,17 @@ with col_res:
             pred, ("No description available.", "Keine Beschreibung verfügbar.")
         )
 
+        # FIX: Nutzt jetzt die flexiblen CSS-Klassen statt starrer Inline-Styles!
         st.markdown(
             f"""
-            <div style="display: flex; align-items: stretch; background-color: rgba(65, 105, 225, 0.20); 
-                        border: 1px solid rgba(65, 105, 225, 0.5); border-left: 6px solid #4169e1; 
-                        border-radius: 8px; overflow: hidden; height: 85px;">
-                <!-- Linker Teil: Profilname (kompakter für mehr Platz rechts) -->
-                <div style="flex: 0 0 22%; display: flex; align-items: center; justify-content: center; 
-                            padding: 8px 10px; font-size: 1.35rem; font-weight: 700; color: #ffffff; text-align: center;">
-                    {pred}
-                </div>
-                <!-- Trenner -->
-                <div style="width: 2px; background-color: #111111; opacity: 0.8;"></div>
-                <!-- Rechter Teil: Breiterer Textbereich -->
-                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; 
-                            padding: 8px 16px; gap: 3px; overflow: hidden;">
-                    <div style="font-size: 0.98rem; color: #ffffff; line-height: 1.25;">
-                        {en_desc}
-                    </div>
-                    <div style="font-size: 0.82rem; color: #cfcfcf; line-height: 1.2;">
-                        ({de_desc})
-                    </div>
+            <div class="result-box">
+                <div class="result-title">{pred}</div>
+                <div class="result-divider"></div>
+                <div class="result-text">
+                    <div style="font-size: 0.98rem; color: #ffffff; line-height: 1.25;">{en_desc}</div>
+                    <div style="font-size: 0.82rem; color: #cfcfcf; line-height: 1.2; margin-top: 2px;">({de_desc})</div>
                 </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
-        
