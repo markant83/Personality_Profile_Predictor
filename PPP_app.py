@@ -39,7 +39,7 @@ st.markdown(
         margin-top: 0.5rem !important;
     }
 
-/* 1. Fixierte Kopfzeile ganz oben */
+    /* Fixierte Kopfzeile ganz oben */
     .sticky-header {
         position: fixed;
         top: 2.875rem; /* Sitzt exakt unter Streamlits Menü-Leiste */
@@ -59,14 +59,14 @@ st.markdown(
         padding: 0 1rem; /* Gleicher Abstand wie Streamlits Block-Container */
     }
     
-    /* 1. Oberer Leerraum & Layoutbreite */
+    /* Oberer Leerraum & Layoutbreite */
     .block-container {
         padding-top: 7.5rem !important;
         padding-bottom: 2rem !important;
         max-width: 920px !important;
     }
 
-    /* 2. Plastischer 3D-Button (Höhe exakt an Ergebnisbox angepasst) */
+    /* Plastischer 3D-Button (Höhe exakt an Ergebnisbox angepasst) */
     div.stButton > button {
         background: linear-gradient(180deg, #3a3f47 0%, #2b2f36 100%) !important;
         color: #ffffff !important;
@@ -92,7 +92,7 @@ st.markdown(
         line-height: 1.25 !important;
         white-space: pre-line !important;
     }
-    /* 2. Zeile: Deutsch (0.88rem, hellgrau) */
+    /* Zeile: Deutsch (0.88rem, hellgrau) */
     div.stButton > button p:last-child,
     div.stButton > button div:last-child {
         font-size: 0.88rem !important;
@@ -112,7 +112,7 @@ st.markdown(
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* 3. Dropdown-Schriftgröße */
+    /* Dropdown-Schriftgröße */
     div[data-baseweb="select"] {
         font-size: 1.1rem !important;
     }
@@ -124,6 +124,34 @@ st.markdown(
     background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.4), transparent) !important;
     margin: 1.5rem 0 !important;
     }
+
+    /* Responsives Verhalten für Smartphones */
+    @media (max-width: 768px) {
+        /* Titel kompakter machen, damit nichts umbricht */
+        .sticky-header h1 {
+            font-size: 1.25rem !important;
+            line-height: 1.2 !important;
+        }
+        
+        /* Deutschen Untertitel auf dem Handy kleiner anzeigen oder ausblenden */
+        .sticky-header h1 span {
+            display: block !important;
+            font-size: 0.75rem !important;
+            margin-top: 2px !important;
+        }
+
+        /* Mehr Platz nach oben, damit das oberste Feld (Geschlecht) nicht verdeckt wird */
+        .block-container {
+            padding-top: 6.8rem !important;
+            padding-left: 0.8rem !important;
+            padding-right: 0.8rem !important;
+        }
+
+        .sticky-header-content {
+            padding: 0 0.8rem !important;
+        }
+    }
+
 
     </style>
     """,
