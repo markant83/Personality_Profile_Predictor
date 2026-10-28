@@ -125,14 +125,19 @@ st.markdown(
     margin: 1.5rem 0 !important;
     }
 
-    /* Responsives Verhalten für Smartphones */
-    /* Verhindert seitliches Wackeln/Fliegen */
-    html, body, [data-testid="stAppViewContainer"] {
+/* Responsives Verhalten für Smartphones */
+    /* Verhindert globales seitliches Wackeln/Fliegen */
+    html, body, 
+    [data-testid="stAppViewContainer"], 
+    [data-testid="stMain"], 
+    .main {
         overflow-x: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     @media (max-width: 768px) {
-        /* Header fest verankern */
+        /* 1. Header fest verankern & Schriftgrößen anpassen */
         .sticky-header {
             position: fixed !important;
             top: 2.875rem !important;
@@ -142,7 +147,6 @@ st.markdown(
             padding: 0.4rem 0 0.1rem 0 !important;
         }
 
-        /* Schriftgröße verkleinern */
         .sticky-header h1 {
             font-size: 1.15rem !important;
             line-height: 1.2 !important;
@@ -152,11 +156,45 @@ st.markdown(
             font-size: 0.7rem !important;
         }
 
-        /* Ausreichend Abstand nach oben: Geschlecht ist sofort voll sichtbar */
+        /* 2. Ausreichend Abstand nach oben: Geschlecht ist sofort voll sichtbar */
         .block-container {
             padding-top: 8.5rem !important;
             padding-left: 1rem !important;
             padding-right: 1rem !important;
+            max-width: 100vw !important;
+            overflow-x: hidden !important;
+            box-sizing: border-box !important;
+        }
+
+        /* 3. Likert-Skalen einbremsen & Zeilenumbruch erzwingen */
+        div[role="radiogroup"] {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+            max-width: 100% !important;
+        }
+
+        div[role="radiogroup"] label {
+            white-space: normal !important;
+            word-break: break-word !important;
+            font-size: 0.8rem !important;
+            max-width: 100% !important;
+        }
+
+        /* Slider & allgemeine Skalentexte umbrechen */
+        .stSlider, .stRadio, [data-testid="stWidgetLabel"], .stMarkdown {
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+            max-width: 100% !important;
+        }
+
+        [data-testid="stSliderTickBar"], 
+        [data-testid="stSliderTickBarMin"], 
+        [data-testid="stSliderTickBarMax"] {
+            white-space: normal !important;
+            font-size: 0.75rem !important;
+            max-width: 100% !important;
         }
     }
 
